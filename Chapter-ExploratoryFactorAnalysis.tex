@@ -1,0 +1,498 @@
+% !TeX root = ./main.tex
+\chapter{探索性因子分析}
+
+\section{简介}
+
+在之前的章节中，我们讨论了主成分分析——一种多元数据降维以及理解变量间关联模式的方法。
+在这个章节中，我们讨论\mindex{探索性因子分析}{exploratory factor analysis}，这是一种类似的方法，
+基于一种不同的隐含的模型，被称作“\mindex{公因子模型}{common factor model}”。
+虽然这两种方法比较类似，但探索性因子分析经常被用于完成和主成分分析相同的目标。
+我们这里的目的是强调他们之间概念上的区别。
+公因子模型关于数据集中的每个变量是如何计量的有明确的假设。
+模型认为每次计量的变化是由几个相对较少的共同因子造成的（即两个或多个变量之间不可观测的共同特性）。
+尽管一个变量实际上可能有一个或多个特性因子，统计上不可能将这些特殊变量混淆。
+探索性因子分析的目标是发现共同因子（区别于特性因子）并解释它们和观测数据之间的关系。
+因此，尽管用于完成探索性因子分析的解决方案和主成分分析类似，但他们背后的模型是不相同的。
+
+在探索性因子分析中，我们让观测到的数据间关联模式决定因子构成。
+在第\ref{chapter:ConfirmatoryFactorAnalysis}章中，我们转向验证性数据分析，
+利用一些关于因子构成的先验知识，去检验他们是否与数据一致。
+在验证性数据分析中，背后的模型与探索性因子分析是相同的，但是求解过程则大不相同。
+
+公因子模型提供了一个明确的框架让我们可以对数据计量属性进行评估。
+在这个章节提供的案例中，我们假设特性因子的变化可以单纯地由计量误差解释。
+广义地，为了区分特性方差（即特性因子的方差）和误差方差（即每个变量计量误差的方差），计量可靠性的独立评估是很必要的。
+如果没有这种独立评估，我们就假设特性因子方差反映了计量误差。
+这让我们对计量的可靠性有了一定的了解：误差方差越小，计量越可靠。
+第\ref{chapter:ConfirmatoryFactorAnalysis}章中由关于可靠性的形式化概念。
+
+在这章节的编写过程中，我们特别注重使用旋转来提高因子分析方案的解释性。
+因为探索性因子分析的方向是随意的，有时候选择有简单结构的方案才是有意义的
+（即在某种意义上最易于解释的一种，由 Thurstone 在1947年提出）。
+实际上，在对数据进行主成分分析时旋转也同样可行。
+这里所介绍的所有旋转方法都可以应用于主成分分析。
+
+\subsection{潜在应用}
+
+探索性因子分析与大多数主成分分析的应用场景相同；而公因子模型当测量模型的明确假设是适当时更合适。
+下面介绍探索性因子分析的两种说明性应用：分析“潜在特征”或“不可观测的特性”、使用因子得分分析依赖性。
+
+\subsubsection{分析“潜在特征”或“不可观测的特性”}
+
+有的时候区分数据变量和它被设计用于计量的概念是非常重要的。
+在处理物理特性时，例如长度和重量（测量仪器具有高精度），这种区分是不必要的，因为目标属性几乎可以被完美计量。
+但是，当处理态度、信仰、感知以及其他心理学特性时，我们的计量方法是不完美的。
+
+在市场，调查研究员可能对获取某个概念（例如“顾客满意度”）的信息感兴趣，以更好理解这个概念以及企业行为对它的影响。
+设计一个单一的调查问题来准确认知如“顾客满意度”这种概念，即使是可能的，也非常困难。
+相反的，研究者可能回设计一个包含几个问题的调查问卷，每个问题并不能完美反映“顾客满意度”，但能够反应某一个方面。
+使用因子分析，可以找到这些问题背后的共同变量（很可能反映了客户潜在的满意度）并分离出计量中的非系统误差。
+从公因子模型中得到的因子得分可以作为后续分析和建模中顾客满意度的一个指数（或多个指数，取决于潜在变量的个数）。
+
+Aaker（1997）使用探索性因子分析研究了品牌特性的几个维度。
+为了处理 114 个特性指标（从心理学和市场调研研究中产生的 309 个候选指标中筛选得到的），
+Aaker 让受访者对一组10个品牌中的每一个进行 114 个特性指标的 5 级尺度打分（从 1 到 5 ，1 代表完全没有体现，5 代表非常能够体现）。
+她使用了四个不同的品牌数据集，每组都有一个焦点品牌（李维斯牛仔）和九个其他的
+（都是非常突出的、广为人知的国民品牌，涵盖了多个不同的产品类型），一共 37 个不同的品牌。
+Aaker 对打分结果按人数平均（每个品牌在每个指标上都被大约 150 到 160 个受访者打分，除了李维斯被所有人打分）
+并对指标间 $ 114 \times 114 $ 维的相关矩阵进行了因子分析。
+
+Aaker 选择了一个五个因子的方案，解释了 90\% 的指标差异。
+在进行了旋转之后，她将这些因子标记为：
+诚意（sincerity，解释了 26.5\% 的差异）、刺激（excitement，25.1\%）、竞争力（competence，17.5\%）、
+世故（sophistication，11.9\%）和粗犷（ruggedness，8.8\%）。
+表\ref{tab:traits-associated-with-different-dimensions-of-brand-personality}展示了这五个因子的一些最高度相关的指标。
+基于这个研究的结果， Aaker 继续构造并验证了 42 项测度用于测量者五个品牌特性的成分。
+
+\begin{table}
+    \centering
+    \ttabbox[\textwidth]{
+        \caption{品牌特性不同维度相关的指标}
+        \label{tab:traits-associated-with-different-dimensions-of-brand-personality}
+    }{
+        \begin{tabular}{lllll}\toprule
+            \bfseries Sincerity & 
+            \bfseries Excitement & 
+            \bfseries Competence & 
+            \bfseries Sophistication & 
+            \bfseries Ruggedness \\\midrule
+            Honest & Daring & Reliable & Glamorous & Tough \\
+            Genuine & Spirited & Responsible & Pretentious & Strong \\ 
+            Cheerful & Imaginative & Dependable & Charming & Outdoorsy \\ 
+            Down-to-earth & Up-to-date & Efficient & Romantic & Masculine \\ 
+            Friendly & Cool & Intelligent & Upper class & \\ 
+            & & Successful & Smooth & \\\bottomrule
+        \end{tabular}
+    }
+\end{table}
+
+\subsubsection{使用因子得分分析依赖性}
+
+和主成分分析一样，减少维数往往是因子分析的主要目标。
+一方面，这么做有助于对数据进行可视化；另一方面，也有助于增加模型简洁性。
+例如，在一个关于新的豪华车概念的大型市场调研中，Roberts（1984）调查了 162 个目标消费者关于他们在汽车的认知。
+他使用九个维度来计量他们在熟悉的汽车模型的认值：奢华、样式、可靠性、油耗、安全、维修成本、质量、续航以及道路偏好。
+他的最终目标是建立一个模型，将认知和偏好联系起来；但是可用于拟合这个模型的自由维度数太有限。
+因此他使用因子分析来看看他是否可以找到一组更少数目的潜在公因子可以替代。
+
+Roberts 发现一个双因子方案解释了这九个特性中 60\% 的差异。Roberts 然后旋转了方案（使用方差最大法）来使得它更容易解释。
+指标和因子之间的相关系数被称为\mindex{因子载荷}{factor loadings}，
+如表\ref{tab:two-factor-solution-for-roberts-data}所示；相关系数最高的是用下划线标出。
+这种模式指示第一个因子（与奢华、样式、安全性、道路偏好等指标高度相关）反映了车的情感诉求，
+而第二个指标（与可靠性、油耗、维修成本、质量和续航相关）反映了车的经济性。
+Roberts 将这两个因子标记为吸引力和合理性。
+
+\begin{table}
+    \begin{floatrow}
+        \ttabbox{
+            \caption{Roberts 所用数据的双因子方案：因子载荷矩阵}
+            \label{tab:two-factor-solution-for-roberts-data}
+        }{
+            \begin{tabular}{lcc}\toprule
+                             & Appealing & Sensible                  \\\midrule
+                Luxury       & \underline{0.884} & -0.051            \\ 
+                Style        & \underline{0.748} & 0.153             \\ 
+                Reliability  & 0.396             & \underline{0.691} \\ 
+                Fuel Economy & -0.202            & \underline{0.786} \\ 
+                Safety       & \underline{0.720} & 0.172             \\ 
+                Maintenance  & 0.149             & \underline{0.756} \\ 
+                Quality      & 0.501             & \underline{0.650} \\ 
+                Durable      & 0.386             & \underline{0.677} \\ 
+                Performance  & \underline{0.686} & 0.391             \\\bottomrule       
+            \end{tabular}
+        }
+        \ttabbox{
+            \caption{心理学考试数据的相关矩阵}
+            \label{tab:EFA-Correlation-matrix-for-psychological-test-data}
+        }{
+            \begin{tabular}{lccccc}\toprule
+                & $ PARA $ & $ SENT $ & $ WORD $ & $ ADD $ & $ DOTS $ \\ 
+                $ PARA $ & 1.000 &       &       &       &       \\ 
+                $ SENT $ & 0.722 & 1.000 &       &       &       \\ 
+                $ WORD $ & 0.714 & 0.685 & 1.000 &       &       \\ 
+                $ ADD  $ & 0.203 & 0.246 & 0.170 & 1.000 &       \\ 
+                $ DOTS $ & 0.095 & 0.181 & 0.113 & 0.585 & 1.000 \\ 
+                \bottomrule
+            \end{tabular}
+        }
+    \end{floatrow}
+\end{table}
+
+使用这个模型， Roberts 计算每个被打分的车模在每个因子得分的平均值，然后使用这些因子得分来回归前面所述的受访者喜好。
+使用这两个因子，他能够解释 30\% 的受访者喜好的差异（依据调整 \rsquare）；这两个因子都高度显著。
+相反，当 Roberts 使用 9 个指标来回归受访者喜好时，拟合数据的能力仅有轻微的提高（调整 \rsquare 是 33\%），
+而他参数估计值的标准差大幅增加，由于指标间的多重共线性（实际上，九个系数中只有两个在 0.05 等级下显著）。
+使用这个简洁的因子模型， Roberts 能够评估新概念车的相对定位，并精确预测市场价值。
+
+\section{原理}
+
+\subsection{直观认识}
+
+和主成分分析一样，对因子分析的直观感觉也最好是通过一个简单的例子进行。
+考虑 Holzinger 和 Swineford 进行的针对儿童的心理学考试（1939）。
+他们对七、八年级的儿童进行了一些不同的考试。
+为了使问题简化，我们主要关注下面五个考试：
+篇章理解（$ PARA $）、句子完成（$ SENT $）、单词含义（$ WORD $）、加法（$ ADD $）、数点（$ DOTS $）。
+我们使用变量 $ X_1 $ 到 $ X_5 $ 表示这五个不同的考试。
+他们间的相关系数（基于 145 个儿童组成的样本）如表\ref{tab:EFA-Correlation-matrix-for-psychological-test-data}所示。
+
+在因子分析中，我们假设考试得分可以用一个潜在公因子和几个特殊因子（每个考试一个特殊因子）的函数来描述。
+也就是说，例如，我们相信这些学生的考试得分背后都有一个公因子，记为 $ \xi $ 。
+这个因子可能反映了每个学生的智力或应试能力。
+我们的但因子模型表示，对考试 $ i $ 的得分 $ X_i $ 是因子 $ \xi $ （对所有五个考试来说都是相同的）
+和考试 $ i $ 的特有的因子——不妨记为 $ \delta_i $ ——的函数。
+在很多可以用于估计公因子模型参数的方法中，所有我们实际可以估计的是唯一方差（或称“唯一性”），即这个特殊因子和测量误差方差的和。
+我们假设这个特殊因子方差完全由测量误差引起，反映考试在完美捕获背后共同因子能力的不足。
+由于特殊因子仅影响他们特别针对的计量（即 $ \delta_i $ 仅影响考试 $ i $），
+我们的后续处理将在假设这些特殊因子 $ \delta $ 互不相关
+（即对于所有不同\!
+\footnote{译者注：原文中没有明确表示“不同”的 $ i $ 和 $ j $，但此处确实应不相同。
+若相同，则 $ \corr(\delta_i,\delta_j) = 1 $ 而不是 $ 0 $ 。}\!
+的 $ i $ 和 $ j $，$ \delta_i $ 和 $ \delta_j $之间的相关系数是 0）。
+且与潜在的公因子 $ \xi $ 也不相关的假设下进行。
+这些都是公因子模型的标准假设。
+
+这个单因子模型可以用图\ref{fig:EFA-path-diagram-of-one-factor-model-with-five-variables}中的示意图所表示。
+图中指向每个考试变量的箭头（即观测计量值，用盒形表示）指示测量中变异的贡献源。
+这种情况下，每个测量值 $ X_i $ 有两个变异的贡献源（都不可观测）：公因子 $ \xi $ 和一个特殊因子 $ \delta_i $ 。
+用公式的形式，可以写作下式
+\begin{align}
+    \begin{split}
+        X_1 & = \lambda_1\xi + \delta_1 \\ 
+        X_2 & = \lambda_2\xi + \delta_2 \\ 
+        X_3 & = \lambda_3\xi + \delta_3 \\ 
+        X_4 & = \lambda_4\xi + \delta_4 \\ 
+        X_5 & = \lambda_5\xi + \delta_5 \\ 
+    \end{split}
+\end{align}
+在这些公式中，系数 $ \lambda $ 反映了潜在公因子 $ \xi $ 体现在测量值 $ X $ 中的程度。
+假设 $ X $ 和 $ \xi $ 都是标准化的变量（即有零均值和单位方差）， $ X_i $ 的方差可以被分解为：
+\begin{equation}
+    \var{X_i} = \var{\lambda_i\xi + \delta_i} = \lambda_i^2 + \var{\delta_i} = 1
+\end{equation}
+由于变量被标准化，$ \lambda_i $ 可以解释为相关系数。
+$ \lambda_i^2 $ 可被解释为 $ X_i $ 中的变化在公因子 $ \xi $ 反映的比例，被称作 $ X_i $ 的\mindex{共通度}{communality}。
+$ X_i $ 中剩余的变化可由特殊因子 $ \delta_i $ 解释。
+如果用 $ \theta_{ii} = \var{\delta_i} $ 来表示特殊因子的方差（我们假设它反映了 $ X_i $ 的计量误差），
+那么 $ X_i $ 的共通度等于
+\begin{equation}
+    1 - \theta_{ii}^2
+\end{equation}
+
+如果 $ X_i $ 的共通度接近 1 （即误差方差接近 0），表示 $ X_i $ 是潜在公因子 $ \xi $ 的一个几乎完美的度量。
+反之，如果共通度接近 0，表示 $ \xi $ 完全没有体现在 $ X_i $ 中
+（如果 $ X_i $ 是一个对学生智力设计较差的考试，这种情况就可能发生），
+那么系数 $ \lambda $ 可能接近零，并且几乎 $ X_i $ 的所有方差都由特殊因子 $ \delta_i $ 解释。
+
+\begin{figure}
+    \begin{floatrow}
+        \ffigbox{
+            \begin{tikzpicture}[
+                node distance = 5pt and 5pt,
+                common/.style = {circle, inner sep=10pt, draw=black},
+                test/.style = {rectangle, inner sep=10pt, draw=black},
+                specific/.style = {rectangle, inner sep=2pt, draw=none},
+                arrow/.style = {->, >=stealth}
+            ]
+                \node (xi) [common] {$ \xi $};
+                \node (X3) [test,below=of xi,yshift=-20pt] {$ X_3 $};
+                \node (X2) [test,left=of X3] {$ X_2 $};
+                \node (X1) [test,left=of X2] {$ X_1 $};
+                \node (X4) [test,right=of X3] {$ X_4 $};
+                \node (X5) [test,right=of X4] {$ X_5 $};
+                \node (delta1) [specific,below=of X1,yshift=-8pt] {$ \delta_1 $};
+                \node (delta2) [specific,below=of X2,yshift=-8pt] {$ \delta_2 $};
+                \node (delta3) [specific,below=of X3,yshift=-8pt] {$ \delta_3 $};
+                \node (delta4) [specific,below=of X4,yshift=-8pt] {$ \delta_4 $};
+                \node (delta5) [specific,below=of X5,yshift=-8pt] {$ \delta_5 $};
+                \draw [arrow] (xi) -- (X1.north);
+                \draw [arrow] (xi) -- (X2.north);
+                \draw [arrow] (xi) -- (X3.north);
+                \draw [arrow] (xi) -- (X4.north);
+                \draw [arrow] (xi) -- (X5.north);
+                \draw [arrow] (delta1) -- (X1.south);
+                \draw [arrow] (delta2) -- (X2.south);
+                \draw [arrow] (delta3) -- (X3.south);
+                \draw [arrow] (delta4) -- (X4.south);
+                \draw [arrow] (delta5) -- (X5.south);
+            \end{tikzpicture}
+        }{
+            \caption{五变量单因子模型线划示意图}
+            \label{fig:EFA-path-diagram-of-one-factor-model-with-five-variables}
+        }
+        \ffigbox{
+            \begin{tikzpicture}[
+                node distance = 5pt and 5pt,
+                common/.style = {circle, inner sep=10pt, draw=black},
+                test/.style = {rectangle, inner sep=10pt, draw=black},
+                specific/.style = {rectangle, inner sep=2pt, draw=none},
+                anchore/.style = {rectangle, inner sep=2pt, draw=none},
+                arrow/.style = {->, >=stealth}
+            ]
+                \node (a_xi) [anchore] {};
+                \node (xi1) [common,left=of a_xi] {$ \xi_1 $};
+                \node (xi2) [common,right=of a_xi] {$ \xi_2 $};
+                \node (X3) [test,below=of a_xi,yshift=-40pt] {$ X_3 $};
+                \node (X2) [test,left=of X3] {$ X_2 $};
+                \node (X1) [test,left=of X2] {$ X_1 $};
+                \node (X4) [test,right=of X3] {$ X_4 $};
+                \node (X5) [test,right=of X4] {$ X_5 $};
+                \node (delta1) [specific,below=of X1,yshift=-8pt] {$ \delta_1 $};
+                \node (delta2) [specific,below=of X2,yshift=-8pt] {$ \delta_2 $};
+                \node (delta3) [specific,below=of X3,yshift=-8pt] {$ \delta_3 $};
+                \node (delta4) [specific,below=of X4,yshift=-8pt] {$ \delta_4 $};
+                \node (delta5) [specific,below=of X5,yshift=-8pt] {$ \delta_5 $};
+                \draw [arrow] (xi1) -- (X1.north);
+                \draw [arrow] (xi2) -- (X1.north);
+                \draw [arrow] (xi1) -- (X2.north);
+                \draw [arrow] (xi2) -- (X2.north);
+                \draw [arrow] (xi1) -- (X3.north);
+                \draw [arrow] (xi2) -- (X3.north);
+                \draw [arrow] (xi1) -- (X4.north);
+                \draw [arrow] (xi2) -- (X4.north);
+                \draw [arrow] (xi1) -- (X5.north);
+                \draw [arrow] (xi2) -- (X5.north);
+                \draw [arrow] (delta1) -- (X1.south);
+                \draw [arrow] (delta2) -- (X2.south);
+                \draw [arrow] (delta3) -- (X3.south);
+                \draw [arrow] (delta4) -- (X4.south);
+                \draw [arrow] (delta5) -- (X5.south);
+            \end{tikzpicture}
+        }{
+            \caption{五变量双因子模型线划示意图}
+            \label{fig:EFA-path-diagram-of-two-factor-model-with-five-variables}
+        }
+    \end{floatrow}
+\end{figure}
+
+在这个特殊的示例中，我们从一个潜在于 Holzinger 和 Swineford 的研究中考试得分的单共同因子假设开始（一种类似于通用智力的东西）。
+但是，也有一种情况，即考试中的个人表现可能是多于一个潜在能力的函数。
+例如，我们可能认为学生的考试表现有两个不同的内在能力所决定——\!
+文学天赋（记为 $ \xi_1 $）和计量天赋（记为 $ \xi_2 $）——\!
+并且这两种不同的因子在不同类型的考试中有不同程度的表现。
+这个双因子模型如图\ref{fig:EFA-path-diagram-of-two-factor-model-with-five-variables}所示。
+
+在双因子模型中，在每个考试得分度量 $ X_i $ 中有三个源贡献了变异：
+两个公因子 $ \xi_1 $ 和 $ \xi_2 $ 以及一个特殊变量 $ \delta_i $。
+使用公式的形式，双因子模型可以写作：
+\begin{align}
+    \begin{split}
+        X_1 & = \lambda_{11}\xi_1 + \lambda_{12}\xi_2 + \delta_1 \\
+        X_2 & = \lambda_{21}\xi_1 + \lambda_{22}\xi_2 + \delta_2 \\
+        X_3 & = \lambda_{31}\xi_1 + \lambda_{32}\xi_2 + \delta_3 \\
+        X_4 & = \lambda_{41}\xi_1 + \lambda_{42}\xi_2 + \delta_4 \\
+        X_5 & = \lambda_{51}\xi_1 + \lambda_{52}\xi_2 + \delta_5 \\
+    \end{split}
+\end{align}
+
+如前，系数 $ \lambda $ 反映了潜在公因子 $ \xi $ 体现在测量值 $ X $ 中的程度。
+如果 $ X $ 和 $ \xi $ 被标准化，参数 $ \lambda $ 可以被解释为相关系数。
+如果我们进一步假设潜在因子互不相关（公因子模型的另一个标准假设），
+那么每个考试度量的共通度由那个变量因子载荷的平方和给出；
+因此，$ X_i $ 的共通度由 $ \lambda_{11}^2 + \lambda_{12}^2 $ 给出。
+
+考虑在双因子模型下，如果一个学生有较高的文学天赋（高 $ \xi_1 $）和较低的计量天赋（低 $ \xi_2 $），那会发生什么。
+我们可以预期这个学生在那些比计量天赋更需要文学天赋的考试中表现良好。
+如果学生在句子完成考试中的表现只依赖于他（她）的文学天赋，那么我们应该期望一个
+接近于 1 的 $ \lambda_{11} $ 的值和一个接近于 0 的 $ \lambda_{12} $ 的值。
+
+在没有较强的关于学生考试表现潜在因子结构的先验知识这个探索性设定中，
+我们希望能够从数据中能够推到出潜在因子的合理数量以及公因子模型公式中的系数值。
+这个方法（在下一节中会详细阐述）和主成分分析的方法相类似，都是尝试提取一个较少数量的因子组以充分代表观测值的相关矩阵。
+不同的是，公因子模型中，我们必须解释特殊因子 $ \delta $ ，而这没有在主成分分析中体现。
+
+\subsection{求解过程}
+
+和主成分分析一样，探索性因子分析的求解过程主要关注于 $ \vX $ 的协方差矩阵或相关系数矩阵的分解。
+这两种方法的不同之处在于，特殊因子是公因子模型的一部分。
+由于这些特殊因子被认为彼此不相关，而且与潜在公因子独立，这些因子仅仅贡献于协方差矩阵的对角线元素。
+这一点通过检查每个度量值 $ X_i $ 协方差矩阵的对角线元素可以很容易发现：
+\begin{equation}
+    \var{X_i} = \var{\lambda_{i1}\xi_1 + \lambda_{i2}\xi_2 + \delta_i}
+\end{equation}
+
+$ X_i $ 方差表达式中有九个交叉项。
+根据公因子模型加入的独立性假设（以及进一步的公因子被标准化为具有单位方差的假设），
+所有的协方差项都排除在模型之外，只剩
+\begin{equation}
+    \var{X_i} = \lambda_{i1}^2 + \lambda_{i2}^2 + \theta_{ii}^2
+\end{equation}
+其中 $ \theta_{ii}^2 = \var{\delta_i} $ 。
+因此，特殊因子出现在 $ \vX $ 的协方差矩阵中的唯一位置就是对角线，也就是他们对每个度量贡献变异的地方。
+
+如果我们实现直到每个特殊因子的变异呢？
+如果这样，那么我们可以在协方差矩阵中减去这些值。
+然后我们剩下一个矩阵，仅由潜在公因子的方差和协方差构成。
+然后我们可以使用主成分分析方法来分解这些矩阵，并寻找公因子。
+这是我们在探索性因子分析中使用的求解过程的本质。
+在主成分分析中，我们分解相关矩阵 $ \vR $ （对角线元素都是 1）。
+但是对于公因子模型，我们分解对角线元素为 $ 1 - \theta_{ii}^2 $ 的相关矩阵。
+实际上，我们通过在模型中减去由于特殊因子引起的变异开始
+（回想一下，这些变异可以被解释为测量误差或其他针对于不同考试的变异源，而且和其他因子不相关），
+仅在对角线上保留共通度。
+然后我们尝试使用公因子解释剩下的变异。
+如果我们知道共通度，那么我们就可以使用与主成分分析相同的方法解决这个问题。
+这有时被称为\mindex{主轴因子化}{principal axis factoring}（或简单的被称为公因子模型的主成分方法）。
+共通度的估计是这个求解过程中非平凡的部分，有许多不同的方法。
+
+现在让我们假设我们不知道在我们这个解释性示例中由于特殊因子引起的变异的大小
+（在后续章节中，我们讨论当我们不知道这些值时该怎么办）。
+对于这个考试集合，我们假设每个考试中大约一半的变异都有特殊因子产生，
+也就是说，我们开始时对所有 $ i $ 设置 $ \theta_{ii}^2 = 0.50 $ 
+然后对这个修改的矩阵进行矩阵分解。
+特征值如下所示：
+\begin{equation}
+    \begin{array}{ccccc}
+        \lambda_1 = 2.187 &
+        \lambda_2 = 1.022 &
+        \lambda_3 = -0.135 &
+        \lambda_4 = -0.089 &
+        \lambda_5 = 0.015 
+    \end{array}
+\end{equation}
+
+首先值得注意的是，这些特征值和主成分分析的特征值有所不同。
+并不是所有的特征值都是正的，并且他们的和也不是 $ p $ （分析中变量的数目）。
+原因是，通过减去由于特殊因子引起的变异，我们减少了需要由公因子解释的剩余的信息。
+这个模型中已经由特殊因子解释的变异是 $ 0.50 + 0.50 + 0.50 + 0.50 + 0.50 = 2.5 $，
+即 $ 2.5/5.0 = 50\% $ 的原始五个考试得分的变异。
+对角线元素的和也是 $ 2.5 $，即由公因子解释的方差。
+
+现在仍然存在问题：我们需要多少公因子？
+注意到选择提取的因子数量的标准与主成分分析相比多少有点不同变化。
+由于有一些解释了一部分变异的特殊因子，我们的目标是使用公因子解释尽可能多的剩余变异。
+因此我们寻找有意义地不同于零地特征值。
+在这种情况下，是 2，表示我们提取 $ c = 2 $ 个公因子。
+
+双因子方案的\mindex{因子载荷}{factor loadings}矩阵（即有原始变量和公因子地相关系数组成地矩阵）
+如表\ref{tab:EFA-matrix-of-factor-loadings-for-two-factor-model}所示。
+这种因子结构的模式表现出前三个考试（篇章理解、句子完成、单词含义）在第一个公因子上载荷更多（所有相关系数都接近 0.8），
+而后两个考试（加法和计数）在第二个公因子上载荷更高（所有相关系数都接近 0.6）。
+这和第一个因子反映学生的文学天赋、第二个因子指示计量天赋的解释一致。
+
+
+\begin{table}
+    \centering
+    \ttabbox[\textwidth]{
+        \caption{双因子模型的因子载荷矩阵（近似共通度）}
+        \label{tab:EFA-matrix-of-factor-loadings-for-two-factor-model}
+    }{
+        \begin{tabular}{lcc}\toprule
+            & Factor 1 & Factor 2 \\\midrule
+            $ PARA $ & 0.7722 & -0.2351 \\ 
+            $ SENT $ & 0.7838 & -0.1576 \\ 
+            $ WORD $ & 0.7562 & -0.2372 \\ 
+            $ ADD  $ & 0.4293 &  0.6017 \\ 
+            $ DOTS $ & 0.3476 &  0.6506 \\ 
+            \bottomrule
+        \end{tabular}
+    }
+\end{table}
+
+使用因子载荷，我们也可以通过这两个公因子计算每项考试解释的变异所占的比例。
+这个比例被称为\mindex{共通度}{communality}。
+例如，对于篇章理解考试（$ X_1 $），公因子解释了考试中 $ (0.77)^2 + (-0.24)^2 = 0.65 $ 即 65\% 的变异。
+这个共通度值比我们一开始在分析中使用的 $ 1 - \theta_{11}^2 = 0.50 $ 的值略高。
+这是因为我们的起点是基于一些先验知识，只是近似的。
+对于学生的特定样本，精确值更可能是不同的值。
+
+通过跌多过程来修正我们初始估计值是可行的，最终我们会得到一个一致的结果。
+我们用第一次因子分析的结果替代我们处是共通度估计值，并再次进行因子分析。
+那么，我们将使用新的值 0.65 代替 $ X_1 $ （篇章理解） 对应的对角线上的元素 0.50，
+对于其他变量我们也这么做。
+我们可以继续一次迭代、两次迭代这个过程，直到它收敛——也就是说，直到两次迭代之间共通度的变化足够小。
+这个迭代过程经常被用于共通度的估计。
+这个方法有时被称为\mindex{主因子法}{principal factor method}。
+
+如果我们没有足够的关于我们数据中测量误差的先验知识（即我们的测量中与潜在因子无关的非系统变异）呢？
+我们使用什么来设置共通度的初始估计值？
+一个被广泛使用的方法是\mindex{多元相关平方系数}{squared multiple correlation}，
+即在数据集中一个变量中可被其他所有变量解释的方差的大小。
+例如，如果我们想使用多元相关平方系数作为作为 $ X_1 $ （篇章理解）的初始估值，
+我们将 $ X_1 $ 与其余的变量 $ X_2, X_3, X_4, X_5 $ 进行回归，并使用 \rsquare 值。
+
+为什么多元相关平方系数是共通度的良好估值？
+因为共通度是由公因子 $ \xi $ 所解释的 $ X $ 中方差的占比。
+尽管我们因此喜欢用公因子 $ \xi $ 对 $ X $ 进行回归，但也仍然存在公因子不可被观测的问题。
+但是我们有其余变量 $ X $，每个都反映了潜在变量 $ \xi $（尽管并不完美）。
+因为测量有误差，他们解释 $ X $ 的能力被减弱了。
+因此，多元相关平方系数可以作为共通度的下界。
+一般地，测量越可靠（即特殊因子有较小的方差），多元相关平方系数作为共通度的估值越准确。
+
+表展示了考试得分数据使用多元相关平方系数作为共通度估值的因子分析结果。
+我们使用一个像上述的迭代过程：用修正的共通度估值代替初始值并继续，直到后续的共通度估计值没有明显改变。
+
+\begin{table}[htb]
+    \ttabbox[\textwidth]{
+        \caption{使用多元相关平方系数作为初始估计值进行的因子分析}
+        \label{tab:EFA-factor-analysis-with-smcs-as-initial-estimates}
+    }{
+        \begin{tabular}{l}
+            \begin{minipage}{0.5\textwidth}
+                \begin{tabular}{ccccc}
+                    \multicolumn{5}{c}{\bfseries 先验共通度估计：多元相关平方系数} \\\midrule
+                    $ PARA $ & $ SENT $ & $ WORD $ & $ ADD $ & $ DOTS $ \\ 
+                    0.6158 & 0.5914 & 0.5701 & 0.3672 & 0.3493 \\
+                \end{tabular}
+            \end{minipage} \\
+            \begin{minipage}{0.5\textwidth}
+                \begin{tabular}{lccccc}
+                    & \multicolumn{5}{c}{\bfseries 最终特征值} \\\cmidrule{2-6}
+                    & 1 & 2 & 3 & 4 & 5 \\ 
+                    Eigenvalue & 2.2826 & 1.0273 & 0.0252 & -0.0010 & -0.0247 \\ 
+                \end{tabular}
+            \end{minipage} \\
+            \begin{minipage}{0.5\textwidth}
+                \begin{tabular}{lcc}
+                    & \multicolumn{2}{c}{\bfseries 因子模式} \\\cmidrule{2-3}
+                    & Factor 1 & Factor 2 \\ 
+                    $ PARA $ & 0.8349 & -0.2418 \\
+                    $ SENT $ & 0.8253 & -0.1398 \\
+                    $ WORD $ & 0.7898 & -0.2274 \\
+                    $ ADD  $ & 0.4146 &  0.6503 \\
+                    $ DOTS $ & 0.3297 &  0.6890 \\
+                    & \multicolumn{2}{c}{每个因子解释的方差} \\
+                    & 2.2826 & 1.0273 \\ 
+                \end{tabular}
+            \end{minipage}
+        \end{tabular}
+    }
+\end{table}
+
+表\ref{tab:EFA-matrix-of-factor-loadings-for-two-factor-model}所示的初始的因子载荷和
+表\ref{tab:EFA-factor-analysis-with-smcs-as-initial-estimates}所示的最终结果的差异并不显著。
+因子模式指向相同的因子本质的解释。
+变异的划分也基本相同：由共同因子解释的变异的大小仍然大约是 66\%。
+对比两个初始估计值，最后两个考试（加法和计数）相关的共通度比前三个低：
+对于 $ X_4 $ 和 $ X_5 $，共通度大约是 0.60，而对于 $ X_1 $，$ X_2 $ 和 $ X_3 $ 共通度大约是 0.70。
+如果我们认为这种差异来自于测量误差，那么我们可能得出后两个考试比前两个考试更不可靠的结论。
+
+关于这种共通度的估计方法，需要注意一点。
+如果技术考试被省略，仅保留加法作为学生计量天赋的唯一度量，会怎么样？
+在这些情况下，基于多元相关平方系数计算的假发考试的共通度的估值会非常低
+（因为前三个考试没有任何一个反映第二个共同因子）。
+因此，我们更可能得出加法是一项非常不可靠的考试，但实际上它是一个重要潜在结构的唯一度量。
+正是共通度估值的这个问题，导致有人更喜欢主成分分析法而不是因子分析法。
+
+\subsection{旋转因子方案}
+
