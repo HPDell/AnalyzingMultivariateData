@@ -1,0 +1,33 @@
+language: bash
+sudo: required
+dist: trusty
+before_install:
+  - curl -L https://github.com/HPDell/travis-texlive/releases/download/2018-11-30_02/texlive.tar.xz | tar -JxC ~
+  - PATH=$HOME/texlive/bin/x86_64-linux:$PATH
+  - wget https://github.com/alif-type/xits/releases/download/v1.200/XITS-1.200.zip -O XITS.zip
+  - unzip XITS.zip
+  - sudo mkdir -p /usr/share/fonts/opentype/
+  - sudo mv ./XITS-1.200/XITS*.otf /usr/share/fonts/opentype/
+  - sudo mkfontscale
+  - sudo mkfontdir
+  - sudo fc-cache -fv
+  - sudo pip install Pygments
+branches:
+  only:
+    - /^v[\d.]+\d$/
+script:
+  - pdflatex -synctex=1 -interaction=nonstopmode -shell-escape main.tex
+  - makeindex main.idx
+  - pdflatex -synctex=1 -interaction=nonstopmode -shell-escape main.tex
+  - pdflatex -synctex=1 -interaction=nonstopmode -shell-escape main.tex
+  - mv main.pdf AnalyzingMultivariateData-CN.pdf
+deploy:
+  provider: releases
+  api_key:
+    secure: $GITHUB_TOKEN
+  file: 
+    - AnalyzingMultivariateData-CN.pdf
+  skip_cleanup: true
+  on:
+    tags: true
+  

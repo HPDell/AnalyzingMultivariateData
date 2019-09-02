@@ -1,0 +1,134 @@
+\usepackage{floatrow}
+%------------------------------------------------------------------------------
+% Ctex
+%------------------------------------------------------------------------------
+\newcommand{\paragraphnamebox}[1]{\makebox[2em][l]{#1}}
+\newcommand{\subparagraphnamebox}[1]{\makebox[2em][l]{#1}}
+\setcounter{secnumdepth}{7}
+\ctexset{
+    section = {
+        format = \Large\bfseries\raggedright
+    },
+    paragraph = {
+        name = {(,)},
+        number = \arabic{paragraph},
+        numbering = true,
+        aftername = {},
+        nameformat = \paragraphnamebox
+    },
+    subparagraph = {
+        name = {(,)},
+        number = \roman{subparagraph},
+        numbering = true,
+        beforeskip = 0pt,
+        aftername = {},
+        nameformat = \subparagraphnamebox
+    }
+}
+
+%------------------------------------------------------------------------------
+% Unicode math
+%------------------------------------------------------------------------------
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{mathptmx}
+% \usepackage{unicode-math}
+% \setmainfont{XITS}
+% \setmathfont[bold-style = ISO]{XITS Math}
+
+
+%------------------------------------------------------------------------------
+% Minted
+%------------------------------------------------------------------------------
+\usepackage{minted}
+\setminted{
+    autogobble = true,
+    linenos=true,
+    frame=lines,
+    framesep=2mm,
+    fontsize=\scriptsize,
+    breaklines=true
+}
+\setminted[py]{
+    python3=true,
+}
+\setmintedinline{
+    fontsize=\normalsize
+}
+
+%------------------------------------------------------------------------------
+% Add new functions
+%------------------------------------------------------------------------------
+\usepackage{graphicx}
+% \usepackage{subfig}
+\usepackage{tikz}
+\usetikzlibrary{graphs,arrows,shapes,chains}
+\usetikzlibrary{calc}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcolumntype{Z}{>{\raggedleft\arraybackslash}X}
+\usepackage{ltxtable}
+\usepackage{makecell}
+\usepackage{makeidx}
+
+%------------------------------------------------------------------------------
+% Define new macros
+%------------------------------------------------------------------------------
+\newcommand{\diff}{\symrm{d }}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\cpi}{\symrm{\pi}}
+\newcommand{\T}{^\symrm{T}}
+\newcommand{\highlight}[1]{\textcolor{blue}{\textbf{\kaishu{#1}}}}
+\newcommand{\done}{\ooalign{$\square$ \cr \raisebox{3pt}{\scriptsize{$√$}}}}
+\newcommand{\undone}{\ooalign{$\square$ \cr \raisebox{3pt}{}}}
+\newcommand{\cov}[1]{\mathrm{cov}\left({#1}\right)}
+\newcommand{\var}[1]{\mathrm{var}\left({#1}\right)}
+\newcommand{\corr}[1]{\mathrm{corr}\left({#1}\right)}
+\newcommand{\ddfrac}[2]{\displaystyle{\frac{\displaystyle{#1}}{\displaystyle{#2}}}}
+\newlength{\subparitemindent}
+\newlength{\paritemindent}
+\setlength{\paritemindent}{3em}
+\setlength{\subparitemindent}{5em}
+\newenvironment{paritemize}{
+    \begin{itemize}[leftmargin=\paritemindent]
+}{
+    \end{itemize}
+    \hangafter=1\setlength{\hangindent}{2em}
+}
+\newenvironment{subparitemize}{
+    \begin{itemize}[leftmargin=\subparitemindent]
+}{
+    \end{itemize}
+    \hangafter=1\setlength{\hangindent}{4em}
+}
+\newcommand{\hparagraph}[1]{\paragraph{#1} \hangafter=1\setlength{\hangindent}{2em}}
+\newcommand{\hsubparagraph}[1]{\subparagraph{#1} \hangafter=1\setlength{\hangindent}{4em}}
+\newcommand{\hsubparagraphcontinue}{\setlength{\leftskip}{3em}\hangafter=1\setlength{\hangindent}{1em}}
+\newcommand{\hfrac}[2]{\left. {#1} \middle/ {#2} \right.}
+\newcommand{\mindex}[2]{{\kaishu{#1}}(#2)\index{{#1}({#2})}}
+\newcommand{\rsquare}{$ R^2 $}
+%------------------------------------------------------------------------------
+% Format setting
+%------------------------------------------------------------------------------
+\usepackage[left=1.91cm, right=1.91cm, top=1.91cm, bottom=1.91cm]{geometry}
+\hypersetup{colorlinks=true,bookmarksnumbered=true}
+% \allowdisplaybreaks
+\numberwithin{equation}{section}
+% \numberwithin{figure}{section}
+\usepackage[inline]{enumitem}
+\setlist{topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt,itemjoin=\quad\quad}
+%% 脚注每页重新标号
+\usepackage[perpage]{footmisc}
+% \setcounter{secnumdepth}{3}
+% 积分号样式
+\usepackage[fourier]{varint}
+% 表格行距
+\renewcommand\arraystretch{1.3}
+% 题注格式
+\usepackage{caption}
+\captionsetup{labelfont=bf,labelsep=quad}
