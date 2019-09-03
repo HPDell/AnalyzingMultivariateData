@@ -79,10 +79,10 @@
 %------------------------------------------------------------------------------
 % Define new macros
 %------------------------------------------------------------------------------
-\newcommand{\diff}{\symrm{d }}
+\newcommand{\diff}{\mathrm{d }}
 \newcommand{\ds}{\displaystyle}
-\newcommand{\cpi}{\symrm{\pi}}
-\newcommand{\T}{^\symrm{T}}
+\newcommand{\cpi}{\mathrm{\pi}}
+\newcommand{\T}{^\mathrm{T}}
 \newcommand{\highlight}[1]{\textcolor{blue}{\textbf{\kaishu{#1}}}}
 \newcommand{\done}{\ooalign{$\square$ \cr \raisebox{3pt}{\scriptsize{$√$}}}}
 \newcommand{\undone}{\ooalign{$\square$ \cr \raisebox{3pt}{}}}
@@ -112,13 +112,14 @@
 \newcommand{\hfrac}[2]{\left. {#1} \middle/ {#2} \right.}
 \newcommand{\mindex}[2]{{\kaishu{#1}}(#2)\index{{#1}({#2})}}
 \newcommand{\rsquare}{$ R^2 $}
+\newcommand{\diag}{\mathrm{diag}}
 %------------------------------------------------------------------------------
 % Format setting
 %------------------------------------------------------------------------------
 \usepackage[left=1.91cm, right=1.91cm, top=1.91cm, bottom=1.91cm]{geometry}
 \hypersetup{colorlinks=true,bookmarksnumbered=true}
 % \allowdisplaybreaks
-\numberwithin{equation}{section}
+\numberwithin{equation}{chapter}
 % \numberwithin{figure}{section}
 \usepackage[inline]{enumitem}
 \setlist{topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt,itemjoin=\quad\quad,leftmargin=4em,labelwidth=2em,labelsep=0em,align=left}
@@ -128,9 +129,11 @@
 % 积分号样式
 \usepackage[fourier]{varint}
 % 表格行距
-\renewcommand\arraystretch{1.3}
+% \renewcommand\arraystretch{1.3}
 % 题注格式
 \usepackage{caption}
 \captionsetup{labelfont=bf,labelsep=quad}
 \DeclareCaptionSubType[alph]{figure} 
 \captionsetup[subfigure]{labelformat=parens,labelsep=space,justification=centerlast}
+% Autoref 格式
+\renewcommand{\eqref}[1]{(\ref{#1})}

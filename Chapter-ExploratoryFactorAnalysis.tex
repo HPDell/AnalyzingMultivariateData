@@ -191,16 +191,16 @@ Roberts 将这两个因子标记为吸引力和合理性。
     \var{X_i} = \var{\lambda_i\xi + \delta_i} = \lambda_i^2 + \var{\delta_i} = 1
 \end{equation}
 由于变量被标准化，$ \lambda_i $ 可以解释为相关系数。
-$ \lambda_i^2 $ 可被解释为 $ X_i $ 中的变化在公因子 $ \xi $ 反映的比例，被称作 $ X_i $ 的\mindex{共通度}{communality}。
+$ \lambda_i^2 $ 可被解释为 $ X_i $ 中的变化在公因子 $ \xi $ 反映的比例，被称作 $ X_i $ 的\mindex{共同度}{communality}。
 $ X_i $ 中剩余的变化可由特殊因子 $ \delta_i $ 解释。
 如果用 $ \theta_{ii} = \var{\delta_i} $ 来表示特殊因子的方差（我们假设它反映了 $ X_i $ 的计量误差），
-那么 $ X_i $ 的共通度等于
+那么 $ X_i $ 的共同度等于
 \begin{equation}
     1 - \theta_{ii}^2
 \end{equation}
 
-如果 $ X_i $ 的共通度接近 1 （即误差方差接近 0），表示 $ X_i $ 是潜在公因子 $ \xi $ 的一个几乎完美的度量。
-反之，如果共通度接近 0，表示 $ \xi $ 完全没有体现在 $ X_i $ 中
+如果 $ X_i $ 的共同度接近 1 （即误差方差接近 0），表示 $ X_i $ 是潜在公因子 $ \xi $ 的一个几乎完美的度量。
+反之，如果共同度接近 0，表示 $ \xi $ 完全没有体现在 $ X_i $ 中
 （如果 $ X_i $ 是一个对学生智力设计较差的考试，这种情况就可能发生），
 那么系数 $ \lambda $ 可能接近零，并且几乎 $ X_i $ 的所有方差都由特殊因子 $ \delta_i $ 解释。
 
@@ -309,8 +309,8 @@ $ X_i $ 中剩余的变化可由特殊因子 $ \delta_i $ 解释。
 如前，系数 $ \lambda $ 反映了潜在公因子 $ \xi $ 体现在测量值 $ X $ 中的程度。
 如果 $ X $ 和 $ \xi $ 被标准化，参数 $ \lambda $ 可以被解释为相关系数。
 如果我们进一步假设潜在因子互不相关（公因子模型的另一个标准假设），
-那么每个考试度量的共通度由那个变量因子载荷的平方和给出；
-因此，$ X_i $ 的共通度由 $ \lambda_{11}^2 + \lambda_{12}^2 $ 给出。
+那么每个考试度量的共同度由那个变量因子载荷的平方和给出；
+因此，$ X_i $ 的共同度由 $ \lambda_{11}^2 + \lambda_{12}^2 $ 给出。
 
 考虑在双因子模型下，如果一个学生有较高的文学天赋（高 $ \xi_1 $）和较低的计量天赋（低 $ \xi_2 $），那会发生什么。
 我们可以预期这个学生在那些比计量天赋更需要文学天赋的考试中表现良好。
@@ -350,11 +350,11 @@ $ X_i $ 方差表达式中有九个交叉项。
 但是对于公因子模型，我们分解对角线元素为 $ 1 - \theta_{ii}^2 $ 的相关矩阵。
 实际上，我们通过在模型中减去由于特殊因子引起的变异开始
 （回想一下，这些变异可以被解释为测量误差或其他针对于不同考试的变异源，而且和其他因子不相关），
-仅在对角线上保留共通度。
+仅在对角线上保留共同度。
 然后我们尝试使用公因子解释剩下的变异。
-如果我们知道共通度，那么我们就可以使用与主成分分析相同的方法解决这个问题。
+如果我们知道共同度，那么我们就可以使用与主成分分析相同的方法解决这个问题。
 这有时被称为\mindex{主轴因子化}{principal axis factoring}（或简单的被称为公因子模型的主成分方法）。
-共通度的估计是这个求解过程中非平凡的部分，有许多不同的方法。
+共同度的估计是这个求解过程中非平凡的部分，有许多不同的方法。
 
 现在让我们假设我们不知道在我们这个解释性示例中由于特殊因子引起的变异的大小
 （在后续章节中，我们讨论当我们不知道这些值时该怎么办）。
@@ -395,7 +395,7 @@ $ X_i $ 方差表达式中有九个交叉项。
 \begin{table}
     \centering
     \ttabbox[\textwidth]{
-        \caption{双因子模型的因子载荷矩阵（近似共通度）}
+        \caption{双因子模型的因子载荷矩阵（近似共同度）}
         \label{tab:EFA-matrix-of-factor-loadings-for-two-factor-model}
     }{
         \begin{tabular}{lrr}\toprule
@@ -411,37 +411,37 @@ $ X_i $ 方差表达式中有九个交叉项。
 \end{table}
 
 使用因子载荷，我们也可以通过这两个公因子计算每项考试解释的变异所占的比例。
-这个比例被称为\mindex{共通度}{communality}。
+这个比例被称为\mindex{共同度}{communality}。
 例如，对于篇章理解考试（$ X_1 $），公因子解释了考试中 $ (0.77)^2 + (-0.24)^2 = 0.65 $ 即 65\% 的变异。
-这个共通度值比我们一开始在分析中使用的 $ 1 - \theta_{11}^2 = 0.50 $ 的值略高。
+这个共同度值比我们一开始在分析中使用的 $ 1 - \theta_{11}^2 = 0.50 $ 的值略高。
 这是因为我们的起点是基于一些先验知识，只是近似的。
 对于学生的特定样本，精确值更可能是不同的值。
 
 通过跌多过程来修正我们初始估计值是可行的，最终我们会得到一个一致的结果。
-我们用第一次因子分析的结果替代我们处是共通度估计值，并再次进行因子分析。
+我们用第一次因子分析的结果替代我们处是共同度估计值，并再次进行因子分析。
 那么，我们将使用新的值 0.65 代替 $ X_1 $ （篇章理解） 对应的对角线上的元素 0.50，
 对于其他变量我们也这么做。
-我们可以继续一次迭代、两次迭代这个过程，直到它收敛——也就是说，直到两次迭代之间共通度的变化足够小。
-这个迭代过程经常被用于共通度的估计。
+我们可以继续一次迭代、两次迭代这个过程，直到它收敛——也就是说，直到两次迭代之间共同度的变化足够小。
+这个迭代过程经常被用于共同度的估计。
 这个方法有时被称为\mindex{主因子法}{principal factor method}。
 
 如果我们没有足够的关于我们数据中测量误差的先验知识（即我们的测量中与潜在因子无关的非系统变异）呢？
-我们使用什么来设置共通度的初始估计值？
+我们使用什么来设置共同度的初始估计值？
 一个被广泛使用的方法是\mindex{多元相关平方系数}{squared multiple correlation}，
 即在数据集中一个变量中可被其他所有变量解释的方差的大小。
 例如，如果我们想使用多元相关平方系数作为作为 $ X_1 $ （篇章理解）的初始估值，
 我们将 $ X_1 $ 与其余的变量 $ X_2, X_3, X_4, X_5 $ 进行回归，并使用 \rsquare 值。
 
-为什么多元相关平方系数是共通度的良好估值？
-因为共通度是由公因子 $ \xi $ 所解释的 $ X $ 中方差的占比。
+为什么多元相关平方系数是共同度的良好估值？
+因为共同度是由公因子 $ \xi $ 所解释的 $ X $ 中方差的占比。
 尽管我们因此喜欢用公因子 $ \xi $ 对 $ X $ 进行回归，但也仍然存在公因子不可被观测的问题。
 但是我们有其余变量 $ X $，每个都反映了潜在变量 $ \xi $（尽管并不完美）。
 因为测量有误差，他们解释 $ X $ 的能力被减弱了。
-因此，多元相关平方系数可以作为共通度的下界。
-一般地，测量越可靠（即特殊因子有较小的方差），多元相关平方系数作为共通度的估值越准确。
+因此，多元相关平方系数可以作为共同度的下界。
+一般地，测量越可靠（即特殊因子有较小的方差），多元相关平方系数作为共同度的估值越准确。
 
-表展示了考试得分数据使用多元相关平方系数作为共通度估值的因子分析结果。
-我们使用一个像上述的迭代过程：用修正的共通度估值代替初始值并继续，直到后续的共通度估计值没有明显改变。
+表展示了考试得分数据使用多元相关平方系数作为共同度估值的因子分析结果。
+我们使用一个像上述的迭代过程：用修正的共同度估值代替初始值并继续，直到后续的共同度估计值没有明显改变。
 
 \begin{table}[htb]
     \ttabbox[\textwidth]{
@@ -451,7 +451,7 @@ $ X_i $ 方差表达式中有九个交叉项。
         \begin{tabular}{l}
             \begin{minipage}{0.5\textwidth}
                 \begin{tabular}{ccccc}
-                    \multicolumn{5}{c}{\bfseries 先验共通度估计：多元相关平方系数} \\\midrule
+                    \multicolumn{5}{c}{\bfseries 先验共同度估计：多元相关平方系数} \\\midrule
                     $ PARA $ & $ SENT $ & $ WORD $ & $ ADD  $ & $ DOTS $ \\ 
                     $0.6158$ & $0.5914$ & $0.5701$ & $0.3672$ & $0.3493$ \\
                 \end{tabular}
@@ -484,16 +484,16 @@ $ X_i $ 方差表达式中有九个交叉项。
 表\ref{tab:EFA-factor-analysis-with-smcs-as-initial-estimates}所示的最终结果的差异并不显著。
 因子模式指向相同的因子本质的解释。
 变异的划分也基本相同：由共同因子解释的变异的大小仍然大约是 66\%。
-对比两个初始估计值，最后两个考试（加法和计数）相关的共通度比前三个低：
-对于 $ X_4 $ 和 $ X_5 $，共通度大约是 0.60，而对于 $ X_1 $，$ X_2 $ 和 $ X_3 $ 共通度大约是 0.70。
+对比两个初始估计值，最后两个考试（加法和计数）相关的共同度比前三个低：
+对于 $ X_4 $ 和 $ X_5 $，共同度大约是 0.60，而对于 $ X_1 $，$ X_2 $ 和 $ X_3 $ 共同度大约是 0.70。
 如果我们认为这种差异来自于测量误差，那么我们可能得出后两个考试比前两个考试更不可靠的结论。
 
-关于这种共通度的估计方法，需要注意一点。
+关于这种共同度的估计方法，需要注意一点。
 如果技术考试被省略，仅保留加法作为学生计量天赋的唯一度量，会怎么样？
-在这些情况下，基于多元相关平方系数计算的假发考试的共通度的估值会非常低
+在这些情况下，基于多元相关平方系数计算的假发考试的共同度的估值会非常低
 （因为前三个考试没有任何一个反映第二个共同因子）。
 因此，我们更可能得出加法是一项非常不可靠的考试，但实际上它是一个重要潜在结构的唯一度量。
-正是共通度估值的这个问题，导致有人更喜欢主成分分析法而不是因子分析法。
+正是共同度估值的这个问题，导致有人更喜欢主成分分析法而不是因子分析法。
 
 \subsubsection{旋转因子解}
 
@@ -638,9 +638,309 @@ Thurstone 认为大多数内容域可能涉及几个隐藏的（即潜在的或�
 给定定义每个因子的属性簇，我们可以标记第一个因子为“有效性”和第二个因子“温和性”。
 （负载荷反映负相关。例如，“能保持清醒”的得分越高，“温和性”得分越低。）
 
-需要注意的是，旋转过后，初始银子方向方差最大化的性质就丢失了；
+需要注意的是，旋转过后，初始因子方向方差最大化的性质就丢失了；
 也就是说，虽然总体上保留的因子能够解释与原先的数据集中一样多的变异，但这种变异现在在旋转配置的新维度上有所不同。
 因此，第一个（旋转后的）因子解释最大的变异的情况不存在了。
 由于每个因子解释的变异的大小通常并不是关心的主要目标，如果旋转后的解更容易解释，那么这种取舍通常认为是值得的。
 
 \subsection{严密推导}\label{sec:EFA-Mechanics}
+
+在这个更形式化的因子分析模型的处理中，回到主成分分析模型的建立过程中是非常有用的。
+我们已经介绍了，对主成分分析问题的求解等同于对标准化的数据矩阵 $ \vX $ 进行奇异值分解，如下所示：
+\begin{equation}\label{equ:EFA-x-svd}
+    \vX = \vZ_{\mathrm{s}} \vD^{\frac{1}{2}}\vU\T
+\end{equation}
+其中 $ \vZ_{\mathrm{s}} $ 是标准化的主成分（全都互不相关），
+$ \vD^{\frac{1}{2}} $ 是对角线元素全为主成分标准差的对角矩阵，
+$ \vU $ 是特征向量矩阵（全都互相正交）。
+据此，我们可以将样本相关矩阵 $ \vR $ 重写为奇异值分解得到的特征值和特征向量的函数。
+相关系数矩阵为
+\begin{equation}\label{equ:EFA-R-define}
+    \vR = \frac{1}{n-1} \vX\T \vX
+\end{equation}
+带入式(\ref{equ:EFA-x-svd})中的奇异值分解结果到式(\ref{equ:EFA-R-define})中并简化可得
+\begin{align}
+    \begin{split}
+        \vR & = \frac{1}{n-1}(\vZ_{\mathrm{s}} \vD^{\frac{1}{2}}\vU\T)\T(\vZ_{\mathrm{s}} \vD^{\frac{1}{2}}\vU\T) \\ 
+        & = \frac{1}{n-1}\vU\vD^{\frac{1}{2}}(\vZ_{\mathrm{s}}\T\vZ_{\mathrm{s}})\vD^{\frac{1}{2}}\vU\T \\
+        & = (\vU\vD^{\frac{1}{2}})(\vU\vD^{\frac{1}{2}})\T
+    \end{split}
+\end{align}
+因为 $ \hfrac{1}{(n-1)}\vZ_{\mathrm{s}}\T\vZ_{\mathrm{s}} $ 正好是一个单位阵。
+如果我们继续回忆，矩阵乘积 $ \vU\vD^{\frac{1}{2}} $ 正好是因子载荷矩阵 $ \vF $
+（即原始数据矩阵 $ \vX $ 和主成分矩阵 $ \vZ $ 的相关系数矩阵），
+我们可以 $ \vR $ 的表达式简化为如下形式：
+\begin{equation}
+    \vR = \vF\vF\T
+\end{equation}
+
+由于我们使用主成分分析的目标往往是降维，所以我们尝试提取由 $ c $ 个成分组成的子集
+（其中 $ c < p $，$ p $ 是 $ \vX $ 中变量的个数）以近似 $ \vR $。
+因此，在主成分中有
+\begin{equation}\label{equ:EFA-R-pca}
+    \vR \approx \vF_c\vF_c\T
+\end{equation}
+其中 $ \vF_c $ 仅由因子载荷矩阵 $ \vF $ 的前几列组成。
+
+在探索性因子分析中，我们同样尝试近似相关矩阵 $ \vR $，但是使用一个不同的模型。
+在式\eqref{equ:EFA-R-define}中不是将 $ \vX $ 的奇异值分解代入，而是使用上述的公因子模型。
+有 $ c $ 个公因子的一般化模型写作：
+\begin{align}
+    \begin{split}
+        X_1 & = \lambda_{11}\xi_{1} + \lambda_{12}\xi_{2} + \cdots + \lambda_{1c}\xi_{c} + \delta_1 \\
+        X_2 & = \lambda_{21}\xi_{1} + \lambda_{22}\xi_{2} + \cdots + \lambda_{2c}\xi_{c} + \delta_2 \\
+        X_3 & = \lambda_{31}\xi_{1} + \lambda_{32}\xi_{2} + \cdots + \lambda_{3c}\xi_{c} + \delta_3 \\
+        & \vdots \\
+        X_p & = \lambda_{p1}\xi_{1} + \lambda_{p2}\xi_{2} + \cdots + \lambda_{pc}\xi_{c} + \delta_p \\
+    \end{split}
+\end{align}
+使用矩阵的形式，公因子模型表示为：
+\begin{eqnarray}\label{equ:EFA-X-common-factor}
+    \vX = \vXi\vLambda_c\T + \vDelta
+\end{eqnarray}
+其中 $ \vXi = [\xi_1, \xi_2, \cdots, \xi_c] $，$ \vDelta = [\delta_1, \delta_2, \cdots, \delta_n] $，
+$ \vLambda_c $ 是一个 $ p \times c $ 的系数矩阵。
+另外，我们使用下面三个关于公因子模型成分的假设
+\begin{enumerate}
+    \item 公因子 $ \xi $ 互不相关，且有单位方差 $$ \frac{1}{n-1}\vXi\T\vXi = \vI $$
+    \item 特殊因子 $ \delta $ 互不相关，且拥有对角化协方差矩阵
+    $$ \vTheta = \frac{1}{n-1}\vDelta\T\vDelta = \diag(\theta_{11}, \theta_{22}, \cdots, \theta_{pp}) $$
+    \item 公因子 $ \xi $ 和特殊因子 $ \delta $ 互不相关 $$ \vXi\T\vDelta = \vzero $$
+\end{enumerate}
+
+现在我们将公式\eqref{equ:EFA-R-define}中的 $ \vX $ 用公式\eqref{equ:EFA-X-common-factor}代替，
+来对相关系数矩阵 $ \vR $ 进行近似：
+\begin{align}
+    \begin{split}
+        \vR & = \frac{1}{n-1}(\vXi\vLambda_c\T + \vDelta)\T(\vXi\vLambda_c\T + \vDelta) \\ 
+        & = \frac{1}{n-1}(
+            \vLambda_c\vXi\T\vXi\vLambda_c +
+            \vDelta\T\vXi\vLambda_c\T +
+            \vLambda_c\vXi\T\vDelta +
+            \vDelta\T\vDelta
+        )
+    \end{split}
+\end{align}
+基于公因子模型的假设 3，上式圆括号中的第二项和第三项为零。
+基于假设 1，第一项中的表达式 $ \hfrac{1}{(n-1)}\vXi\T\vXi $ 可以替换为单位矩阵 $ \vI $。
+基于假设 2，最后一项的表达式变为 $ \vTheta $。
+通过这些简化，我们可以得到
+\begin{equation}
+    \vR = \vLambda_c\vLambda_c\T + \vTheta
+\end{equation}
+或者
+\begin{equation}\label{equ:EFA-R-efa}
+    \vR - \vTheta = \vLambda_c\vLambda_c\T
+\end{equation}
+
+将主成分分析模型的公式\eqref{equ:EFA-R-pca}和公因子模型的公式\eqref{equ:EFA-R-efa}进行对比，
+可以发现这两个方法之间的相似性以及本质区别。
+两种情况下，我们都是对一个二次对称矩阵进行分解。
+矩阵 $ \vLambda_c $ 事实上与矩阵 $ \vF_c $ 同构：
+是因子载荷矩阵，其元素可被解释为原始变量 $ \vX $ 和提取的 $ c $ 个公因子的相关系数。
+
+\subsubsection{旋转不确定性}
+
+在主成分分析中，我们按顺序方式选择每个成分，以解释原始数据中尽可能大的变异，条件是与所有先前选定的主成分不相关。
+这确保了一个唯一解，虽然在选择的方向上有点武断。
+但是在公因子模型中，我们没有强加这种约束。
+结果是，事实上有无穷多解，他们对矩阵 $ \vR - \vTheta $ 能够近似的程度是相同的。
+我们将这个属性称为公因子模型的\mindex{旋转不确定性}{rotational indeterminacy}。
+
+我们首先通过一个例子来展示这种不确定性。
+考虑表\ref{tab:EFA-factor-analysis-with-smcs-as-initial-estimates}所示的考试的分数据的双因子解。
+图\ref{fig:diagram-showing-clockwise-rotation}展示了由该表中因子载荷矩阵所绘制的图表。
+我们现在通过将他们顺时针旋转30°来改变因子的方向。
+旋转（通过矩阵乘法进行）保留了两个因子的正交性。
+由章节，我们知道进行正交旋转（二维）的矩阵具有以下形式：
+\begin{equation}
+    \vT = \begin{pmatrix}
+        \cos\alpha & -\sin\alpha \\ 
+        \sin\alpha & \cos\alpha
+    \end{pmatrix}
+\end{equation}
+当旋转角 $ \alpha = -30 $ 度时，我们得到下列正交旋转矩阵 $ \vT $
+\begin{equation}
+    \vT = \begin{pmatrix}
+        0.866 & 0.500 \\
+        -0.500 & 0.866
+    \end{pmatrix}
+\end{equation}
+
+\begin{figure}\CenterFloatBoxes
+    \begin{floatrow}
+        \ffigbox[\FBwidth]{
+            \begin{tikzpicture}[scale=3.5]
+                \draw (-1,0) -- (1,0);
+                \draw (0,-1) -- (0,1) coordinate [label=left:未旋转] (Ymax);
+                \draw [rotate=60,line width=2pt] (0,-1) -- (0,1);
+                \draw [rotate=60,line width=2pt] (-1,0) -- (1,0) coordinate [label=right:旋转] (YmaxR);
+                \coordinate (O) at (0,0);
+                \coordinate [label={[right]:PARA}]  (PARA) at (0.8349,-0.2418);
+                \coordinate [label={[right]:SENT}]  (SENT) at (0.8253,-0.1398);
+                \coordinate [label={[below]:WORD}]  (WORD) at (0.7898,-0.2674);
+                \coordinate [label={[right]:ADD }]  (ADD ) at (0.4146, 0.6503);
+                \coordinate [label={[above,xshift=-1em]:DOTS}]  (DOTS) at (0.3297, 0.6890);
+                \draw (O) -- (PARA);
+                \draw (O) -- (SENT);
+                \draw (O) -- (WORD);
+                \draw (O) -- (ADD );
+                \draw (O) -- (DOTS);
+                \draw [<-,>=stealth] (0,0) + (60:0.95) arc [start angle=60,end angle=90,radius=0.95];
+                \draw [<-,>=stealth] (0,0) + (150:0.95) arc [start angle=150,end angle=180,radius=0.95];
+            \end{tikzpicture}
+        }{\caption{顺时针旋转30°的示意图}\label{fig:diagram-showing-clockwise-rotation}}
+        \killfloatstyle
+        \ttabbox[\FBwidth]{
+            \caption{原始因子载荷和旋转-30°后的因子载荷}
+            \label{tab:EFA-initial-factor-loadings-and-factor-loadings-rotated}
+        }{
+            \begin{tabular}{lrrrrr}\toprule
+                & \multicolumn{2}{c}{\textbf{原始载荷}} & & \multicolumn{2}{c}{\textbf{旋转-30°的载荷}} \\\cmidrule{2-3}\cmidrule{5-6}
+                     & Factor 1 & Factor 2 & & Factor 1 & Factor 2 \\ 
+                PARA & $ 0.811$ & $-0.200$ & & $ 0.801$ & $ 0.232$ \\ 
+                SENT & $ 0.811$ & $-0.106$ & & $ 0.754$ & $ 0.313$ \\ 
+                WORD & $ 0.779$ & $-0.195$ & & $ 0.773$ & $ 0.221$ \\ 
+                ADD  & $ 0.375$ & $ 0.586$ & & $ 0.032$ & $ 0.695$ \\ 
+                DOTS & $ 0.295$ & $ 0.614$ & & $-0.052$ & $ 0.679$ \\ 
+                \bottomrule
+            \end{tabular}
+        }
+    \end{floatrow}
+\end{figure}
+
+通过改变代表公因子的轴的方向，我们也改变了因子载荷的值。
+我们可以计算新的载荷（记为 $ \vLambda_c^* $），正好是旋转后的因子 $ \vXi\vT $ 
+和原始变量 $ \vX $（由 $ \vXi\vLambda_c\T + \vDelta $ 给出）的相关系数，简化为
+\begin{equation}
+    \vLambda_c^* = \frac{1}{n-1}(\vXi\vLambda_c\T+\vDelta)\T\vXi\vT
+\end{equation}
+由于 $ \hfrac{1}{(n-1)}\vXi\T\vXi = \vI $ 且 $ \vDelta\T\vXi = 0 $。
+旋转后的因子载荷 $ \vLambda_c^* $ 如表\ref{tab:EFA-initial-factor-loadings-and-factor-loadings-rotated}
+中原始未旋转载荷的旁边所示。
+正如之前所说的，矩阵中的主要载荷（即那些拥有高绝对值的载荷）并没有发生显著改变：
+前三项考试在第一个因子的载荷和后两个在第二个因子的载荷。
+但是注意旋转后的解的交叉载荷改变了。
+前三项考试现在在第二个因子上由正载荷（而不是负载荷），
+而后两项考试则几乎完全负载在第二个因子上（而不是在两个因子上都有正载荷）。
+
+关于旋转因子解有两个重要的性质。
+第一，尽管每个因子解释的方差发生了变化，两个因子解释的总方差仍然相同。
+因为未旋转的解由分解矩阵 $ \vR - \vTheta $ 获得，
+这个解的方向使第一个因子能够解释最多的变异、第二个因子能够解释剩下的变异。
+旋转改变了方向，使得由第一个因子解释的变异变小了。
+但是旋转仅改变公因子空间轴的方向，所以并不影响解释的总方差。
+
+第二个旋转解的性质使共同度没有改变。通过从旋转的因子载荷重构矩阵 $ \vR - \vTheta $ 可以很容易发现这一性质。
+我们有
+\begin{align}
+    \begin{split}
+        \vR - \vTheta & = \vLambda_c^*{\vLambda_c^*}\T \\ 
+        & = \vLambda_c\vT(\vLambda_c\vT)\T \\ 
+        & = \vLambda_c\vT\vT\T\vLambda_c\T \\ 
+    \end{split}
+\end{align}
+进行矩阵乘法，很容易发现 $ \vT\vT\T = \vI $ ：
+\begin{equation}
+    \begin{pmatrix}
+        \cos^2\alpha + \sin^2\alpha = 1 & -\cos\alpha\sin\alpha + \sin\alpha\cos\alpha = 0 \\ 
+        \sin\alpha\cos\alpha - \cos\alpha\sin\alpha = 0 & \cos^2\alpha + \sin^2\alpha = 1 \\ 
+    \end{pmatrix}
+\end{equation}
+更一般地，任何维度的任何正交旋转矩阵都有 $ \vT\vT\T = \vI $ 。
+这是因为矩阵转置实际上将轴按照反方向转了回去，得到了最初的方向。
+
+共同度和被公因子解释的变异以及公因子模型的拟合都不受正交旋转的影响，
+这一重要结论在后面我们考虑增强因子解的可解释性时会非常有用。
+
+\subsubsection{因子旋转}
+
+为了找到最合适的旋转，我们必须找到一种方法以目标函数的形式定量化表达通过简化结构我们想要什么。
+然后我们搜索所有可能的旋转角度，然后选择矩阵 $ \vT $ 使满足旋转后的因子载荷矩阵 $ \vA = \vLambda_c\vT $
+对于简化的结构展现出高的目标函数的值。
+有许多不同的方法来量化最简结构，我们只讨论两个： Kaiser 的最大方差正交旋转法和四次方最大旋转法。
+
+\paragraph{Kaiser 的最大方差正交旋转法}
+回忆旋转后的载荷矩阵每个元素 $ a_{ik} $ 可以被解释为变量 $ i $ 和公因子 $ k $ 间的相关系数。
+载荷的平方 $ a_{ik}^2 $ 是变量 $ i $ 中由公因子 $ k $ 引起的变异的比例。
+由于我们所选择的公因子互不相关，所有公因子所能解释的变异大小之和——即所谓的共同度——可以由载荷平方和给出，
+也就是 $ h_i^2 = \sum_k a_{ik}^2 $ 。
+为了实现最简结构，我们想要找到一个旋转使得平方载荷 $ a_{ik}^2 $ 要么接近 1，要么接近 0。
+
+最大方差过程通过关注 $ \vA $ 的列来尝试实现这一目的：它选择旋转矩阵 $ \vT $ 来最大化 $ a_{ik}^2 $ 的列方差之和。
+第 $ k $ 个列方差由下式给出
+\begin{equation}
+    V_k = \frac{1}{p} \sum_{i=1}^{p}\left(a_{ik}^2\right)^2 - \frac{1}{p^2}\left(\sum_{i=1}^{p}a_{ik}^2\right)^2
+\end{equation}
+对所有因子 $ k $ 最大化列方差 $ V_k $ 之和等同于最大化下式
+\begin{equation}
+    V = \sum_{k=1}^{c}\sum_{i=1}^{p}a_{ik}^4 - \frac{1}{p}\sum_{k=1}^{c}\left(\sum_{i=1}^{p}a_{ik}^2\right)^2
+\end{equation}
+注意到当 $ a_{ik}^2 $ 的值趋向于 0 或 1 时可以得到最大方差；
+根据定义，对于某些因子 $ k $，当 $ a_{ik}^2 $ 的值趋向于 1，所有其他在矩阵中同一行上的项都趋于 0。 
+
+对于最大方差正交旋转法使用归一化平方载荷（$ \hfrac{a_{ik}^2}{h_i^2} $）建立目标函数也是可能的。
+如果使用这种方式归一化载荷，$ \hfrac{a_{ik}^2}{h_i^2} $ 可以被解释为
+变量 $ i $ 由于公因子 $ k $ 引起变异大小的比例。
+使用这种归一化确保在选择旋转时所有矩阵由相同的权重
+（当一些变量有较低共同度时对于没有归一化的平方载荷则不是这种情况）。
+
+\paragraph{四次方最大旋转法}
+与最大方差正交旋转法关注旋转的因子载荷矩阵 $ \vA $ 的列不同，四次方最大旋转法关注行。
+四次方最大旋转法的目标函数依赖于正交旋转前后变量的共同度不变这一事实；
+因此，表达式 $ \sum_k a_{ik}^2 $ 是常数，与旋转矩阵 $ \vT $ 无关。
+对于所有变量，共同度的平方和 $ \sum_i(\sum_k a_{ik}^2)^2 $ 也是一个常数。
+扩展这个表达式得到
+\begin{equation}
+    \sum_{i=1}^{p}\sum_{k=1}^{c} a_{ik}^4 + \sum_{i=1}^{p}\left(\sum_{k=1}^{c}\sum_{j\neq k}a_{ik}^2a_{ij}^2\right)
+\end{equation}
+
+上式的第二项是平方载荷的交叉积。当矩阵具有简单结构时，该积应当尽可能小
+（即当一个变量在因子 $ k $ 上有高载荷，对其他所有因子 $ j $ 载荷应当接近 0）。
+因为上式对于所有旋转矩阵 $ \vT $ 是常数，一种保证交叉积项最小的方法是最大化表达式的第一项。
+因此，四次方最大旋转法选择一个正交旋转矩阵 $ \vT $ 使
+\begin{equation}
+    Q = \sum_{i=1}^{p}\sum_{k=1}^{c} a_{ik}^4
+\end{equation}
+最大。与最大方差正交旋转法相同，在进行旋转之前，可以对平方载荷通过除以变量的共同度进行归一化。
+
+我们在下面的章节中讨论倾斜旋转（旋转不能保持因子的相互正交性）的问题。
+
+\subsubsection{因子得分}
+
+通常，因子分析本身并不是目的，而是进一步分析数据的中间步骤。
+对于后续分析，我们需要获得在缩减的因子空间中每个原始观测的位置。
+这个值被称为\mindex{因子得分}{factor scores}。
+
+从公因子模型中得到因子得分并不像从主成分分析中得到成分得分一样容易。
+回想一下，主成分得分是原始变量的线性组合，可以使用来自相关矩阵的特征向量的系数直接计算。
+在公因子分析中，由于特定因素引入的不确定性，得分无法准确计算。
+换句话说，在公因子模型中我们不能将 $ \xi $ 在不知道 $ \delta $ 的情况下写成 $ X $ 的函数。
+
+因此，有必要估计我们将在计算因子得分时使用的因子得分系数。
+我们用下述线性表达式近似 $ \vXi $ 
+\begin{equation}\label{equ:EFA-Xi-approximate}
+    \vXi = \vX_s\vB
+\end{equation}
+其中 $ \vB $ 时因子得分系数矩阵。由于 $ \vXi $ 的值不能直接被观测到，我们不能使用最小二乘回归计算 $ \vB $。
+但是，如果我们对上式两边同时乘以 $ \hfrac{1}{(n-1)}\vX_s\T $ 我们可以得到
+\begin{equation}
+    \frac{1}{n-1}\vX_s\T\vXi = \frac{1}{n-1}\vX_s\T\vX_s\vB
+\end{equation}
+或
+\begin{equation}
+    \vLambda_c = \vR\vB
+\end{equation}
+
+在保证等式不变的情况下，我们将两边同时乘以 $ \vR^{-1} $，对于因子得分系数有
+\begin{equation}
+    \vB = \vR^{-1}\vLambda_c
+\end{equation}
+将这个式子中的 $ \vB $ 代入式\eqref{equ:EFA-Xi-approximate}中得到用于估计因子得分的下式
+\begin{equation}\label{equ:EFA-Xi-estimate}
+    \vXi = \vX_s \vR^{-1} \vLambda_c
+\end{equation}
+
+注意到由于载荷矩阵 $ \vLambda_c $ 满足旋转不确定性，式\eqref{equ:EFA-Xi-estimate}得到的因子得分
+并不唯一，并且具有相同的旋转不确定性。但是乘积 $ \hat{\vX}_c = \vXi\vLambda_c\T $ 是不变的，
+其中 $ \hat{\vX}_c $ 由 $ c $ 个潜在因子拟合的 $ \vX $ 的一部分。
