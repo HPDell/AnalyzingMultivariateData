@@ -26,8 +26,8 @@
 这让我们对计量的可靠性有了一定的了解：误差方差越小，计量越可靠。
 第\ref{chapter:ConfirmatoryFactorAnalysis}章中由关于可靠性的形式化概念。
 
-在这章节的编写过程中，我们特别注重使用旋转来提高因子分析方案的解释性。
-因为探索性因子分析的方向是随意的，有时候选择有简单结构的方案才是有意义的
+在这章节的编写过程中，我们特别注重使用旋转来提高因子分析解的解释性。
+因为探索性因子分析的方向是随意的，有时候选择有简单结构的解才是有意义的
 （即在某种意义上最易于解释的一种，由 Thurstone 在1947年提出）。
 实际上，在对数据进行主成分分析时旋转也同样可行。
 这里所介绍的所有旋转方法都可以应用于主成分分析。
@@ -57,7 +57,7 @@ Aaker 让受访者对一组10个品牌中的每一个进行 114 个特性指标�
 Aaker 对打分结果按人数平均（每个品牌在每个指标上都被大约 150 到 160 个受访者打分，除了李维斯被所有人打分）
 并对指标间 $ 114 \times 114 $ 维的相关矩阵进行了因子分析。
 
-Aaker 选择了一个五个因子的方案，解释了 90\% 的指标差异。
+Aaker 选择了一个五个因子的解，解释了 90\% 的指标差异。
 在进行了旋转之后，她将这些因子标记为：
 诚意（sincerity，解释了 26.5\% 的差异）、刺激（excitement，25.1\%）、竞争力（competence，17.5\%）、
 世故（sophistication，11.9\%）和粗犷（ruggedness，8.8\%）。
@@ -95,7 +95,7 @@ Aaker 选择了一个五个因子的方案，解释了 90\% 的指标差异。
 他的最终目标是建立一个模型，将认知和偏好联系起来；但是可用于拟合这个模型的自由维度数太有限。
 因此他使用因子分析来看看他是否可以找到一组更少数目的潜在公因子可以替代。
 
-Roberts 发现一个双因子方案解释了这九个特性中 60\% 的差异。Roberts 然后旋转了方案（使用方差最大法）来使得它更容易解释。
+Roberts 发现一个双因子解解释了这九个特性中 60\% 的差异。Roberts 然后旋转了解（使用方差最大法）来使得它更容易解释。
 指标和因子之间的相关系数被称为\mindex{因子载荷}{factor loadings}，
 如表\ref{tab:two-factor-solution-for-roberts-data}所示；相关系数最高的是用下划线标出。
 这种模式指示第一个因子（与奢华、样式、安全性、道路偏好等指标高度相关）反映了车的情感诉求，
@@ -105,20 +105,20 @@ Roberts 将这两个因子标记为吸引力和合理性。
 \begin{table}
     \begin{floatrow}
         \ttabbox{
-            \caption{Roberts 所用数据的双因子方案：因子载荷矩阵}
+            \caption{Roberts 所用数据的双因子解：因子载荷矩阵}
             \label{tab:two-factor-solution-for-roberts-data}
         }{
             \begin{tabular}{lcc}\toprule
-                             & Appealing & Sensible                  \\\midrule
-                Luxury       & \underline{0.884} & -0.051            \\ 
-                Style        & \underline{0.748} & 0.153             \\ 
-                Reliability  & 0.396             & \underline{0.691} \\ 
-                Fuel Economy & -0.202            & \underline{0.786} \\ 
-                Safety       & \underline{0.720} & 0.172             \\ 
-                Maintenance  & 0.149             & \underline{0.756} \\ 
-                Quality      & 0.501             & \underline{0.650} \\ 
-                Durable      & 0.386             & \underline{0.677} \\ 
-                Performance  & \underline{0.686} & 0.391             \\\bottomrule       
+                             & Appealing & Sensible                      \\\midrule
+                Luxury       & \underline{$0.884$} & $-0.051$            \\ 
+                Style        & \underline{$0.748$} & $ 0.153$            \\ 
+                Reliability  & $ 0.396$            & \underline{$0.691$} \\ 
+                Fuel Economy & $-0.202$            & \underline{$0.786$} \\ 
+                Safety       & \underline{$0.720$} & $ 0.172$            \\ 
+                Maintenance  & $ 0.149$            & \underline{$0.756$} \\ 
+                Quality      & $ 0.501$            & \underline{$0.650$} \\ 
+                Durable      & $ 0.386$            & \underline{$0.677$} \\ 
+                Performance  & \underline{$0.686$} & $ 0.391$            \\\bottomrule       
             \end{tabular}
         }
         \ttabbox{
@@ -126,12 +126,12 @@ Roberts 将这两个因子标记为吸引力和合理性。
             \label{tab:EFA-Correlation-matrix-for-psychological-test-data}
         }{
             \begin{tabular}{lccccc}\toprule
-                & $ PARA $ & $ SENT $ & $ WORD $ & $ ADD $ & $ DOTS $ \\ 
-                $ PARA $ & 1.000 &       &       &       &       \\ 
-                $ SENT $ & 0.722 & 1.000 &       &       &       \\ 
-                $ WORD $ & 0.714 & 0.685 & 1.000 &       &       \\ 
-                $ ADD  $ & 0.203 & 0.246 & 0.170 & 1.000 &       \\ 
-                $ DOTS $ & 0.095 & 0.181 & 0.113 & 0.585 & 1.000 \\ 
+                & $ PARA $ & $ SENT $ & $ WORD $ & $ ADD $ & $ DOTS $      \\ 
+                $ PARA $ & $1.000$ &         &         &         &         \\ 
+                $ SENT $ & $0.722$ & $1.000$ &         &         &         \\ 
+                $ WORD $ & $0.714$ & $0.685$ & $1.000$ &         &         \\ 
+                $ ADD  $ & $0.203$ & $0.246$ & $0.170$ & $1.000$ &         \\ 
+                $ DOTS $ & $0.095$ & $0.181$ & $0.113$ & $0.585$ & $1.000$ \\ 
                 \bottomrule
             \end{tabular}
         }
@@ -285,7 +285,8 @@ $ X_i $ 中剩余的变化可由特殊因子 $ \delta_i $ 解释。
     \end{floatrow}
 \end{figure}
 
-在这个特殊的示例中，我们从一个潜在于 Holzinger 和 Swineford 的研究中考试得分的单共同因子假设开始（一种类似于通用智力的东西）。
+在这个特殊的示例中，
+我们从一个潜在于 Holzinger 和 Swineford 的研究中考试得分的单共同因子假设开始（一种类似于通用智力的东西）。
 但是，也有一种情况，即考试中的个人表现可能是多于一个潜在能力的函数。
 例如，我们可能认为学生的考试表现有两个不同的内在能力所决定——\!
 文学天赋（记为 $ \xi_1 $）和计量天赋（记为 $ \xi_2 $）——\!
@@ -384,7 +385,7 @@ $ X_i $ 方差表达式中有九个交叉项。
 因此我们寻找有意义地不同于零地特征值。
 在这种情况下，是 2，表示我们提取 $ c = 2 $ 个公因子。
 
-双因子方案的\mindex{因子载荷}{factor loadings}矩阵（即有原始变量和公因子地相关系数组成地矩阵）
+双因子解的\mindex{因子载荷}{factor loadings}矩阵（即有原始变量和公因子地相关系数组成地矩阵）
 如表\ref{tab:EFA-matrix-of-factor-loadings-for-two-factor-model}所示。
 这种因子结构的模式表现出前三个考试（篇章理解、句子完成、单词含义）在第一个公因子上载荷更多（所有相关系数都接近 0.8），
 而后两个考试（加法和计数）在第二个公因子上载荷更高（所有相关系数都接近 0.6）。
@@ -397,13 +398,13 @@ $ X_i $ 方差表达式中有九个交叉项。
         \caption{双因子模型的因子载荷矩阵（近似共通度）}
         \label{tab:EFA-matrix-of-factor-loadings-for-two-factor-model}
     }{
-        \begin{tabular}{lcc}\toprule
+        \begin{tabular}{lrr}\toprule
             & Factor 1 & Factor 2 \\\midrule
-            $ PARA $ & 0.7722 & -0.2351 \\ 
-            $ SENT $ & 0.7838 & -0.1576 \\ 
-            $ WORD $ & 0.7562 & -0.2372 \\ 
-            $ ADD  $ & 0.4293 &  0.6017 \\ 
-            $ DOTS $ & 0.3476 &  0.6506 \\ 
+            $ PARA $ & $0.7722$ & $-0.2351$ \\ 
+            $ SENT $ & $0.7838$ & $-0.1576$ \\ 
+            $ WORD $ & $0.7562$ & $-0.2372$ \\ 
+            $ ADD  $ & $0.4293$ & $ 0.6017$ \\ 
+            $ DOTS $ & $0.3476$ & $ 0.6506$ \\ 
             \bottomrule
         \end{tabular}
     }
@@ -451,28 +452,28 @@ $ X_i $ 方差表达式中有九个交叉项。
             \begin{minipage}{0.5\textwidth}
                 \begin{tabular}{ccccc}
                     \multicolumn{5}{c}{\bfseries 先验共通度估计：多元相关平方系数} \\\midrule
-                    $ PARA $ & $ SENT $ & $ WORD $ & $ ADD $ & $ DOTS $ \\ 
-                    0.6158 & 0.5914 & 0.5701 & 0.3672 & 0.3493 \\
+                    $ PARA $ & $ SENT $ & $ WORD $ & $ ADD  $ & $ DOTS $ \\ 
+                    $0.6158$ & $0.5914$ & $0.5701$ & $0.3672$ & $0.3493$ \\
                 \end{tabular}
             \end{minipage} \\
             \begin{minipage}{0.5\textwidth}
                 \begin{tabular}{lccccc}
                     & \multicolumn{5}{c}{\bfseries 最终特征值} \\\cmidrule{2-6}
                     & 1 & 2 & 3 & 4 & 5 \\ 
-                    Eigenvalue & 2.2826 & 1.0273 & 0.0252 & -0.0010 & -0.0247 \\ 
+                    Eigenvalue & $2.2826$ & $1.0273$ & $0.0252$ & $-0.0010$ & $-0.0247$ \\ 
                 \end{tabular}
             \end{minipage} \\
             \begin{minipage}{0.5\textwidth}
-                \begin{tabular}{lcc}
+                \begin{tabular}{lrr}
                     & \multicolumn{2}{c}{\bfseries 因子模式} \\\cmidrule{2-3}
                     & Factor 1 & Factor 2 \\ 
-                    $ PARA $ & 0.8349 & -0.2418 \\
-                    $ SENT $ & 0.8253 & -0.1398 \\
-                    $ WORD $ & 0.7898 & -0.2274 \\
-                    $ ADD  $ & 0.4146 &  0.6503 \\
-                    $ DOTS $ & 0.3297 &  0.6890 \\
+                    $ PARA $ & $0.8349$ & $-0.2418$ \\
+                    $ SENT $ & $0.8253$ & $-0.1398$ \\
+                    $ WORD $ & $0.7898$ & $-0.2274$ \\
+                    $ ADD  $ & $0.4146$ & $ 0.6503$ \\
+                    $ DOTS $ & $0.3297$ & $ 0.6890$ \\
                     & \multicolumn{2}{c}{每个因子解释的方差} \\
-                    & 2.2826 & 1.0273 \\ 
+                    & $2.2826$ & $1.0273$ \\ 
                 \end{tabular}
             \end{minipage}
         \end{tabular}
@@ -494,5 +495,152 @@ $ X_i $ 方差表达式中有九个交叉项。
 因此，我们更可能得出加法是一项非常不可靠的考试，但实际上它是一个重要潜在结构的唯一度量。
 正是共通度估值的这个问题，导致有人更喜欢主成分分析法而不是因子分析法。
 
-\subsection{旋转因子方案}
+\subsubsection{旋转因子解}
 
+在下面第\ref{sec:EFA-Mechanics}节中我们会看到，公因子模型实际上拥有无穷多解，
+每种解都有平等的能力再现观测到的协方差矩阵。
+原因是因子解的方向（即描述坐标系统的基向量的选择）是非常随意的。
+这被称为公因子模型的\mindex{旋转不确定性}{rotational indeterminacy}。
+在主成分分析中，为了避免不确定性，我们将问题这样定义：
+第一主成分是原始数据（经过合理缩放）具有最大方差的线性组合，
+第二主成分是拥有次大方差（条件是与第一主成分不相关）的线性组合，等等。
+这保证了唯一（尽管有些随意）解。
+
+如果因子解的方向是非常随意的，那么为什么不选择一个可以更好地帮助我们理解并解释数据的解？
+使用因子载荷矩阵尝试提出潜在公因子的一个明确解释往往是比较头疼的。
+如果我们可以通过旋转因子解选择一个不同的方向使载荷矩阵得到简化则是非常有利的。
+问题就是，如何选择这个方向？
+如何使变化因子载荷矩阵的目标变得可操作，使我们可以找到让我们更接近那个目标的因子解的旋转方式？
+
+寻找这个旋转矩阵 $ \vT $（我们暂时将讨论限制在正交旋转矩阵范围内，这保留了潜在公因子的独立性）最流行的方法
+是基于 Thurstone （1947）描述简单结构原则。
+Thurstone 认为大多数内容域可能涉及几个隐藏的（即潜在的或不可观测的）因子。
+他同样假设任何一个观测到的变量可能和一个或几个潜在因子相联系，而且任何一个因子可能仅和几个变量相联系。
+那么最一般的想法，只要可能，就是找到几个变量簇，每个簇仅明确一个因子。
+更一般地，我们想要找到几个因子轴的方向，使得每项考试（或其他变量）尽在几个因子上有相对较高的载荷（正或负），
+而其他因子的载荷趋于零。
+
+如果潜在简单结构的论证有效，那么因子载荷矩阵应该展现出一种特定的模式（Comery，1973）：
+\begin{enumerate}
+    \item 大多数特殊因子（列）的载荷应当很小（尽可能接近于零），仅仅一些载荷的绝对值应该很大。
+    \item 载荷矩阵的某行，包括每个因子的给定变量的载荷，应当在一个或少数因子上表现出非零载荷。
+    \item 任何一对因子（列）应当展现出不同的载荷模式。否则，这两列所表示的因子无法区分。
+\end{enumerate}
+
+一个可以表明简单结构概念的假设例子如
+表\ref{tab:EFA-factor-loadings-for-pain-relievers}和
+图\ref{fig:EFA-plot-of-factor-loadings-for-attributes-of-pain-relievers}所示。
+设想一个对消费者对止痛药的看法的研究，其中要求每个受试者根据六个属性评价他（她）的首选止痛药品牌：
+\begin{enumerate}
+    \item 不反胃
+    \item 没有副作用
+    \item 能止痛
+    \item 起效快
+    \item 能使人保持清醒
+    \item 适度依赖性\footnote{原文：Provides limited relief.}
+\end{enumerate}
+
+\begin{table}
+    \ttabbox[\textwidth]{
+        \caption{止痛药因子载荷矩阵}
+        \label{tab:EFA-factor-loadings-for-pain-relievers}
+    }{
+        \begin{tabular}{lrrrrr}\toprule
+            & \multicolumn{2}{c}{\textbf{未旋转解}} & & \multicolumn{2}{c}{\textbf{旋转的解}} \\\cmidrule{2-3}\cmidrule{5-6}
+            特性           & Factor 1 & Factor 2 & & Factor 1 & Factor 2 \\ 
+            不反胃         & $ 0.579$ & $-0.452$ & & $ 0.139$ & $ 0.721$ \\ 
+            没有副作用     & $ 0.522$ & $-0.572$ & & $ 0.017$ & $ 0.774$ \\ 
+            能止痛         & $ 0.645$ & $ 0.436$ & & $ 0.772$ & $ 0.097$ \\ 
+            起效快         & $ 0.542$ & $ 0.542$ & & $ 0.764$ & $-0.051$ \\ 
+            能使人保持清醒 & $-0.476$ & $ 0.596$ & & $-0.034$ & $-0.762$ \\ 
+            适度依赖性     & $-0.613$ & $-0.439$ & & $-0.750$ & $-0.074$ \\
+            & \multicolumn{2}{c}{解释的方差} & & \multicolumn{2}{c}{解释的方差} \\ 
+            & $1.921$ & $1.562$ & & $1.765$ & $1.718$ \\\bottomrule 
+        \end{tabular}
+    }
+\end{table}
+
+\begin{figure}
+    \begin{floatrow}
+        \ffigbox[\textwidth]{
+            \begin{subfloatrow}
+                \ffigbox{
+                    \begin{tikzpicture}[scale=3.5]
+                        \def\cross#1{
+                            \draw [line width=1pt] ($(#1)+(-0.03,0)$)--($(#1)+(0.03,0)$);
+                            \draw [line width=1pt] ($(#1)+(0,-0.03)$)--($(#1)+(0,0.03)$);
+                        }
+                        \draw (-1, 0) node[label=left:$0.0$]{} -- ( 1, 0);
+                        \draw ( 0,-1) node[label=below:$0.0$]{} -- ( 0, 1);
+                        \draw (-1,-1) -- (-1, 1) -- ( 1, 1) -- ( 1,-1) -- cycle;
+                        \coordinate (O) at (0,0);
+                        \coordinate [label=above:不反胃]         (X1) at ( 0.579,-0.452);
+                        \coordinate [label=below:没有副作用]     (X2) at ( 0.522,-0.572);
+                        \coordinate [label=below:能止痛]         (X3) at ( 0.645, 0.436);
+                        \coordinate [label=above:起效快]         (X4) at ( 0.542, 0.542);
+                        \coordinate [label=above:能使人保持清醒] (X5) at (-0.476, 0.596);
+                        \coordinate [label=below:适度依赖性]     (X6) at (-0.613,-0.439);
+                        \draw (O) -- (X1); \cross{X1};
+                        \draw (O) -- (X2); \cross{X2};
+                        \draw (O) -- (X3); \cross{X3};
+                        \draw (O) -- (X4); \cross{X4};
+                        \draw (O) -- (X5); \cross{X5};
+                        \draw (O) -- (X6); \cross{X6};
+                    \end{tikzpicture}
+                }{\caption{未旋转解}}
+                \ffigbox{
+                    \begin{tikzpicture}[scale=3.5]
+                        \def\cross#1{
+                            \draw [line width=1pt] ($(#1)+(-0.03,0)$)--($(#1)+(0.03,0)$);
+                            \draw [line width=1pt] ($(#1)+(0,-0.03)$)--($(#1)+(0,0.03)$);
+                        }
+                        \draw (-1, 0) node[label=left:$0.0$]{} -- ( 1, 0);
+                        \draw ( 0,-1) node[label=below:$0.0$]{} -- ( 0, 1);
+                        \draw (-1,-1) -- (-1, 1) -- ( 1, 1) -- ( 1,-1) -- cycle;
+                        \coordinate (O) at (0,0);
+                        \coordinate [label=right:不反胃]         (X1) at ( 0.139, 0.721);
+                        \coordinate [label=left:没有副作用]      (X2) at ( 0.017, 0.774);
+                        \coordinate [label=above:能止痛]         (X3) at ( 0.772, 0.097);
+                        \coordinate [label=below:起效快]         (X4) at ( 0.764,-0.051);
+                        \coordinate [label=below:能使人保持清醒] (X5) at (-0.034,-0.762);
+                        \coordinate [label=below:适度依赖性]     (X6) at (-0.750,-0.074);
+                        \draw (O) -- (X1); \cross{X1};
+                        \draw (O) -- (X2); \cross{X2};
+                        \draw (O) -- (X3); \cross{X3};
+                        \draw (O) -- (X4); \cross{X4};
+                        \draw (O) -- (X5); \cross{X5};
+                        \draw (O) -- (X6); \cross{X6};
+                    \end{tikzpicture}
+                }{\caption{旋转解}}   
+            \end{subfloatrow}
+        }{
+            \caption{止痛药特性因子载荷图：未旋转的和旋转的}
+            \label{fig:EFA-plot-of-factor-loadings-for-attributes-of-pain-relievers}
+        }
+    \end{floatrow}
+\end{figure}
+
+在表\ref{tab:EFA-factor-loadings-for-pain-relievers}中第一部分所示的因子载荷矩阵是未经旋转的双因子分析的解。
+（回想一下，这些未旋转的因子通过使第一个公因子解释最多变异、
+第二个公因子在与第一个公因子物馆的条件下尽可能解释更多剩下的变异而定向。）
+注意到所有载荷矩阵的 12 个元素都相对较大（绝对值都大于 0.4）。
+有这么多重大交叉载荷，获得因子的简单解释就变得比较困难。
+
+图\ref{fig:EFA-plot-of-factor-loadings-for-attributes-of-pain-relievers}绘制出因子载荷，
+并展示旋转因子空间使特性更接近地位于公因子附近如何成为可能。
+想法是选择一个旋转角，使每个特性在公因子上地投影要么很大（即绝对值将近 1）要么很小（绝对值接近 0）。
+这实际上减小了交叉载荷并在简单结构方向上移动了载荷矩阵。
+
+表\ref{tab:EFA-factor-loadings-for-pain-relievers}所示的旋转的因子载荷矩阵展示了接近简单结构的东西。
+特性 3 和 4（“能止痛”和“起效快”）在第一个公因子上有正载荷，特性 6（适度依赖性）有负载荷。
+特性 1 和 2（“不反胃”和“没有副作用”）在第二个公因子上有正载荷，特性 5（“能保持清醒”）有负载荷。
+所有其他的载荷的绝对值都很小。
+给定定义每个因子的属性簇，我们可以标记第一个因子为“有效性”和第二个因子“温和性”。
+（负载荷反映负相关。例如，“能保持清醒”的得分越高，“温和性”得分越低。）
+
+需要注意的是，旋转过后，初始银子方向方差最大化的性质就丢失了；
+也就是说，虽然总体上保留的因子能够解释与原先的数据集中一样多的变异，但这种变异现在在旋转配置的新维度上有所不同。
+因此，第一个（旋转后的）因子解释最大的变异的情况不存在了。
+由于每个因子解释的变异的大小通常并不是关心的主要目标，如果旋转后的解更容易解释，那么这种取舍通常认为是值得的。
+
+\subsection{严密推导}\label{sec:EFA-Mechanics}

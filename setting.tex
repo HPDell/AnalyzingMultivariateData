@@ -121,7 +121,7 @@
 \numberwithin{equation}{section}
 % \numberwithin{figure}{section}
 \usepackage[inline]{enumitem}
-\setlist{topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt,itemjoin=\quad\quad}
+\setlist{topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt,itemjoin=\quad\quad,leftmargin=4em,labelwidth=2em,labelsep=0em,align=left}
 %% 脚注每页重新标号
 \usepackage[perpage]{footmisc}
 % \setcounter{secnumdepth}{3}
@@ -132,3 +132,5 @@
 % 题注格式
 \usepackage{caption}
 \captionsetup{labelfont=bf,labelsep=quad}
+\DeclareCaptionSubType[alph]{figure} 
+\captionsetup[subfigure]{labelformat=parens,labelsep=space,justification=centerlast}
