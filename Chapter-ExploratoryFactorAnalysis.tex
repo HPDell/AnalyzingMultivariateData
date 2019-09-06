@@ -394,20 +394,56 @@ $ X_i $ 方差表达式中有九个交叉项。
 
 \begin{table}
     \centering
-    \ttabbox[\textwidth]{
-        \caption{双因子模型的因子载荷矩阵（近似共同度）}
-        \label{tab:EFA-matrix-of-factor-loadings-for-two-factor-model}
-    }{
-        \begin{tabular}{lrr}\toprule
-            & Factor 1 & Factor 2 \\\midrule
-            $ PARA $ & $0.7722$ & $-0.2351$ \\ 
-            $ SENT $ & $0.7838$ & $-0.1576$ \\ 
-            $ WORD $ & $0.7562$ & $-0.2372$ \\ 
-            $ ADD  $ & $0.4293$ & $ 0.6017$ \\ 
-            $ DOTS $ & $0.3476$ & $ 0.6506$ \\ 
-            \bottomrule
-        \end{tabular}
-    }
+    \begin{floatrow}
+        \ttabbox[\FBwidth]{
+            \caption{双因子模型的因子载荷矩阵（近似共同度）}
+            \label{tab:EFA-matrix-of-factor-loadings-for-two-factor-model}
+        }{
+            \begin{tabular}{lrr}\toprule
+                & Factor 1 & Factor 2 \\\midrule
+                $ PARA $ & $0.7722$ & $-0.2351$ \\ 
+                $ SENT $ & $0.7838$ & $-0.1576$ \\ 
+                $ WORD $ & $0.7562$ & $-0.2372$ \\ 
+                $ ADD  $ & $0.4293$ & $ 0.6017$ \\ 
+                $ DOTS $ & $0.3476$ & $ 0.6506$ \\ 
+                \bottomrule
+            \end{tabular}
+        }
+        \ttabbox[\FBwidth]{
+            \caption{使用多元相关平方系数作为初始估计值进行的因子分析}
+            \label{tab:EFA-factor-analysis-with-smcs-as-initial-estimates}
+        }{
+            \begin{tabular}{l}\toprule
+                \begin{minipage}{0.5\textwidth}
+                    \begin{tabular}{ccccc}
+                        \multicolumn{5}{c}{\bfseries 先验共同度估计：多元相关平方系数} \\\midrule
+                        $ PARA $ & $ SENT $ & $ WORD $ & $ ADD  $ & $ DOTS $ \\ 
+                        $0.6158$ & $0.5914$ & $0.5701$ & $0.3672$ & $0.3493$ \\
+                    \end{tabular}
+                \end{minipage} \\\bottomrule
+                \begin{minipage}{0.5\textwidth}
+                    \begin{tabular}{ccccc}
+                        \multicolumn{5}{c}{\bfseries 最终特征值} \\\midrule
+                        1 & 2 & 3 & 4 & 5 \\ 
+                        $2.2826$ & $1.0273$ & $0.0252$ & $-0.0010$ & $-0.0247$ \\ 
+                    \end{tabular}
+                \end{minipage} \\\bottomrule
+                \begin{minipage}{0.5\textwidth}
+                    \begin{tabular}{lrr}
+                        & \multicolumn{2}{c}{\bfseries 因子模式} \\\cmidrule{2-3}
+                        & Factor 1 & Factor 2 \\ 
+                        $ PARA $ & $0.8349$ & $-0.2418$ \\
+                        $ SENT $ & $0.8253$ & $-0.1398$ \\
+                        $ WORD $ & $0.7898$ & $-0.2274$ \\
+                        $ ADD  $ & $0.4146$ & $ 0.6503$ \\
+                        $ DOTS $ & $0.3297$ & $ 0.6890$ \\
+                        & \multicolumn{2}{c}{每个因子解释的方差} \\
+                        & $2.2826$ & $1.0273$ \\ 
+                    \end{tabular}
+                \end{minipage}\\\bottomrule
+            \end{tabular}
+        }
+    \end{floatrow}
 \end{table}
 
 使用因子载荷，我们也可以通过这两个公因子计算每项考试解释的变异所占的比例。
@@ -442,43 +478,6 @@ $ X_i $ 方差表达式中有九个交叉项。
 
 表展示了考试得分数据使用多元相关平方系数作为共同度估值的因子分析结果。
 我们使用一个像上述的迭代过程：用修正的共同度估值代替初始值并继续，直到后续的共同度估计值没有明显改变。
-
-\begin{table}[htb]
-    \ttabbox[\textwidth]{
-        \caption{使用多元相关平方系数作为初始估计值进行的因子分析}
-        \label{tab:EFA-factor-analysis-with-smcs-as-initial-estimates}
-    }{
-        \begin{tabular}{l}
-            \begin{minipage}{0.5\textwidth}
-                \begin{tabular}{ccccc}
-                    \multicolumn{5}{c}{\bfseries 先验共同度估计：多元相关平方系数} \\\midrule
-                    $ PARA $ & $ SENT $ & $ WORD $ & $ ADD  $ & $ DOTS $ \\ 
-                    $0.6158$ & $0.5914$ & $0.5701$ & $0.3672$ & $0.3493$ \\
-                \end{tabular}
-            \end{minipage} \\
-            \begin{minipage}{0.5\textwidth}
-                \begin{tabular}{lccccc}
-                    & \multicolumn{5}{c}{\bfseries 最终特征值} \\\cmidrule{2-6}
-                    & 1 & 2 & 3 & 4 & 5 \\ 
-                    Eigenvalue & $2.2826$ & $1.0273$ & $0.0252$ & $-0.0010$ & $-0.0247$ \\ 
-                \end{tabular}
-            \end{minipage} \\
-            \begin{minipage}{0.5\textwidth}
-                \begin{tabular}{lrr}
-                    & \multicolumn{2}{c}{\bfseries 因子模式} \\\cmidrule{2-3}
-                    & Factor 1 & Factor 2 \\ 
-                    $ PARA $ & $0.8349$ & $-0.2418$ \\
-                    $ SENT $ & $0.8253$ & $-0.1398$ \\
-                    $ WORD $ & $0.7898$ & $-0.2274$ \\
-                    $ ADD  $ & $0.4146$ & $ 0.6503$ \\
-                    $ DOTS $ & $0.3297$ & $ 0.6890$ \\
-                    & \multicolumn{2}{c}{每个因子解释的方差} \\
-                    & $2.2826$ & $1.0273$ \\ 
-                \end{tabular}
-            \end{minipage}
-        \end{tabular}
-    }
-\end{table}
 
 表\ref{tab:EFA-matrix-of-factor-loadings-for-two-factor-model}所示的初始的因子载荷和
 表\ref{tab:EFA-factor-analysis-with-smcs-as-initial-estimates}所示的最终结果的差异并不显著。
@@ -540,12 +539,12 @@ Thurstone 认为大多数内容域可能涉及几个隐藏的（即潜在的或�
     \item 适度依赖性\footnote{原文：Provides limited relief.}
 \end{enumerate}
 
-\begin{table}
+\begin{table}[htb]
     \ttabbox[\textwidth]{
         \caption{止痛药因子载荷矩阵}
         \label{tab:EFA-factor-loadings-for-pain-relievers}
     }{
-        \begin{tabular}{lrrrrr}\toprule
+        \begin{tabularx}{\textwidth}{XZZZZZ}\toprule
             & \multicolumn{2}{c}{\textbf{未旋转解}} & & \multicolumn{2}{c}{\textbf{旋转的解}} \\\cmidrule{2-3}\cmidrule{5-6}
             特性           & Factor 1 & Factor 2 & & Factor 1 & Factor 2 \\ 
             不反胃         & $ 0.579$ & $-0.452$ & & $ 0.139$ & $ 0.721$ \\ 
@@ -556,11 +555,11 @@ Thurstone 认为大多数内容域可能涉及几个隐藏的（即潜在的或�
             适度依赖性     & $-0.613$ & $-0.439$ & & $-0.750$ & $-0.074$ \\
             & \multicolumn{2}{c}{解释的方差} & & \multicolumn{2}{c}{解释的方差} \\ 
             & $1.921$ & $1.562$ & & $1.765$ & $1.718$ \\\bottomrule 
-        \end{tabular}
+        \end{tabularx}
     }
 \end{table}
 
-\begin{figure}
+\begin{figure}[htb]
     \begin{floatrow}
         \ffigbox[\textwidth]{
             \begin{subfloatrow}
@@ -752,7 +751,7 @@ $ \vLambda_c $ 是一个 $ p \times c $ 的系数矩阵。
 图\ref{fig:diagram-showing-clockwise-rotation}展示了由该表中因子载荷矩阵所绘制的图表。
 我们现在通过将他们顺时针旋转30°来改变因子的方向。
 旋转（通过矩阵乘法进行）保留了两个因子的正交性。
-由章节，我们知道进行正交旋转（二维）的矩阵具有以下形式：
+由第\ref{chapter:vectors-and-matrices}章，我们知道进行正交旋转（二维）的矩阵具有以下形式：
 \begin{equation}
     \vT = \begin{pmatrix}
         \cos\alpha & -\sin\alpha \\ 
@@ -944,3 +943,500 @@ $ \vLambda_c $ 是一个 $ p \times c $ 的系数矩阵。
 注意到由于载荷矩阵 $ \vLambda_c $ 满足旋转不确定性，式\eqref{equ:EFA-Xi-estimate}得到的因子得分
 并不唯一，并且具有相同的旋转不确定性。但是乘积 $ \hat{\vX}_c = \vXi\vLambda_c\T $ 是不变的，
 其中 $ \hat{\vX}_c $ 由 $ c $ 个潜在因子拟合的 $ \vX $ 的一部分。
+
+\section{注意事项}
+
+\subsection{是否可以获得具有相关性的因子解}
+
+当提取因子或组分时（在主成分分析或公因子模型中），我们强制假设正交性（即强加公共因子相互不相关的假设），目的是便于解释。
+然而，一旦我们提取了因子，理论上没有理由（尽管下面讨论了一些实际考虑因素）不能选择允许因子相关的后续旋转。
+通过不约束旋转为正交，可以更好地近似变换的载荷矩阵中的简单结构，从而提高解的可解释性。
+我们将这些非正交旋转称为倾斜旋转。
+倾斜旋转背后的意图是使因子轴尽可能与原始数据集中的变量组对齐——或以其他方式促进所得配置的可解释性——无论结果因素是否不相关。
+因此，倾斜旋转的目标函数类似于正交旋转的目标函数（例如，最小化平方因子负载的叉积之和），但没有正交性的约束。
+
+通常，倾斜变换导致与使用正交旋转时不关心的因子解的解释相关的若干问题。
+主要问题是，通过倾斜旋转，需要区分所谓的结构载荷和模式载荷。
+图\ref{fig:EFA-diagram-depicting-difference-between-structure-loadings-and-pattern-loadings}说明了区别。
+假设我们在倾斜系统中通过倾斜旋转 $ \vLambda_c $ 得到一些点 $ \vp $ ，
+原始（正交）因子解变为了新矩阵 $ \vA^* = \vLambda_c\vT^* $ 其中 $ \vT^* $ 是倾斜协转变换矩阵。
+角度 $ \psi $ 反映了因子 $ \va_1^* $ 和 $ \va_2^* $ 在倾斜系统中的协方差。
+
+\begin{figure}[htb]
+    \ffigbox[\textwidth]{
+        \centering
+        \begin{tikzpicture}
+            \coordinate (O) at (0,0);
+            \coordinate [label=right:$a_1^*$] (a1) at ($ (0:4) $);
+            \coordinate [label=right:$a_2^*$] (a2) at ($ (40:4) $);
+            \coordinate [label=right:$x$] (X) at ($ (0:3) + (0,{1*sin(40)}) $);
+            \coordinate [label=below:$x_1$] (X1) at ($ (a1)!(X)!(O) $);
+            \coordinate [label=left:$x_2$] (X2) at ($ (a2)!(X)!(O) $);
+            \coordinate [label=left:$w_2$] (W2) at ($ (40:1) $);
+            \coordinate [label=below:$w_1$] (W1) at ($ (0:{3-1*cos(40)}) $);
+            \draw (a1) -- (O) -- (a2);
+            \draw (X) -- (X1);
+            \draw (X) -- (X2);
+            \draw (X) -- (W2);
+            \draw (X) -- (W1);
+            \draw (X1) rectangle ++(0.1,0.1);
+            \draw [rotate=-50] (X2) rectangle ++(0.1,0.1);
+            \draw ($ (O) + (0.4,0) $) arc [start angle=0,end angle=40,radius=0.4] (20:0.6) node {$ \psi $};
+            \coordinate [label={[below,xshift=-1.5em]:模式载荷}] (pattern) at ($ (W1) - (0.1,0.6) $);
+            \coordinate [label={[below,xshift=1.5em]:结构载荷}] (structure) at ($ (X1) - (-0.1,0.6) $);
+            \draw [->,>=stealth] (pattern) -- ($ (W1) - (0,0.35) $);
+            \draw [->,>=stealth] (structure) -- ($ (X1) - (0,0.35) $);
+        \end{tikzpicture}
+    }{
+        \caption{结构载荷和模式载荷区别的示意图}
+        \label{fig:EFA-diagram-depicting-difference-between-structure-loadings-and-pattern-loadings}
+    }
+\end{figure}
+
+注意到我们有两种方法可以描述点 $ \vp $ 在倾斜因子空间的位置。
+一种方法是，我们可以描述 $ \vp $ 在轴 $ \va_1^* $ 和 $ \va_2^* $ 上的投影（正交），如图中 $ x_1 $ 和 $ x_2 $ 所示。
+在因子分析术语中，这被称为\mindex{结构载荷}{structure loadings}。
+另一种方法，我们可以描述 $ \vp $ 在轴 $ \va_1^* $ 和 $ \va_2^* $ 上的坐标，如图中 $ w_1 $ 和 $ w_2 $ 所示。
+这被称为\mindex{模式载荷}{pattern loadings}。
+当因子正交时，结构载荷和模式载荷之间没有区别。
+
+结构载荷是变量和因子之间的相关系数（因此范围是 $ -1 $ 到 $ 1 $）。
+这些是由变换后的载荷矩阵 $ \vA^* = \vLambda_c\vT^* $ 给出的值。
+通常，结构载荷在解释因子时一般没什么帮助，因为简单结构被潜在因自相关性掩盖掉了。
+注意，在图中，由于两个因子的相关性，$ x_1 $ 和 $ x_2 $ 都相对较大。
+相反，模式载荷类似于偏回归系数，因为它们考虑了其他因素所导致的变化。
+换句话说，他们是倾斜因子线性组合的系数，这允许我们重建原始配置。
+结果是，模式载荷没有在 $ -1 $ 到 $ 1 $ 之间变化的约束，但是在解释因子解的过程中更有用。
+如图中所示， $ w_1 $ 比 $ w_2 $ 大得多，暗示着点 $ \vp $ 与第一个因子更接近。
+从下式中可以获得模式载荷
+\begin{equation}
+    \vA^*\vP
+\end{equation}
+其中 $ \vP $ 是倾斜坐标系统中具有相关性的因子之间夹角的方向余弦（适当标准化）组成的矩阵。
+在图\ref{fig:EFA-diagram-depicting-difference-between-structure-loadings-and-pattern-loadings}中所示二维示例中，
+模式载荷和结构载荷的关系由下式给出
+\begin{equation}
+    \begin{pmatrix}
+        w_1 & w_2
+    \end{pmatrix} = \begin{pmatrix}
+        x_1 & x_2
+    \end{pmatrix} \begin{pmatrix}
+        1 & \cos\psi \\
+        \cos\psi & 1
+    \end{pmatrix}
+\end{equation}
+
+在处理倾斜解时有另一个警告：由于因子可能相关，变量的共同度不能通过求位于因子载荷矩阵第 $ i $ 行的载荷的平方和进行计算，
+而且因子解释的变异也不能通过求位于因子载荷矩阵第 $ k $ 列的载荷的平方和进行计算。
+
+我们现在通过回到关于心理测试的说明性示例来说明倾斜旋转。
+检查未旋转的因子载荷矩阵（如表\ref{tab:EFA-factor-analysis-with-smcs-as-initial-estimates}所示），
+对双因子解的解释仍然很清晰：
+前三项考试主要在第一个因子上具有负载（我们应当解释为文学天赋），
+后两项主要在第二个因子上具有负载（我们应当解释为计量天赋）。
+问题是，如果我们对这个解应用了某种倾斜旋转，我们能否得到一个更加清晰地简单结构的图景？
+
+为了回答这个问题，我们会使用一种被称作目标矩阵拟合的方法进行倾斜变换。
+目标矩阵代表了一个特别的问题中潜在因子简单结构的表示。
+它可能由基本理论构成，或代表被解释的因子载荷矩阵的结构。
+在这个特别的例子中，我们的目标矩阵是一个简单的矩阵，为
+\begin{equation}
+    \vG = \begin{pmatrix}
+        1 & 0 \\ 
+        1 & 0 \\ 
+        1 & 0 \\ 
+        0 & 1 \\ 
+        0 & 1 \\ 
+    \end{pmatrix}
+\end{equation}
+
+我们的目标是找到一个变换矩阵，将因子载荷矩阵 $ \vLambda_c $ 旋转到与目标矩阵 $ G $ 最接近一致的可能。
+如果我们使用 $ \vT^* $ 表示变换矩阵，那么我们的目标是选择 $ \vT^* $
+使最终变换 $ \vLambda_c\vT^* $ 与目标矩阵 $ \vG $ 尽可能一致。
+表示拟合到 $G$ 的最佳最小二乘的变换由下式给出
+\begin{equation}
+    \vT^* = (\vLambda_c\T\vLambda_c)^{-1} \vLambda_c\T\vG
+\end{equation}
+
+这个过程和将 $ \vG $ 的每一列用 $ \vLambda_c $ 进行回归然后再对 $ \vT^* $ 的结果列进行标准化没有什么区别。
+注意到 $ \vT^* $ 的列通常情况下不正交。
+这种变换有时被称为\mindex{普洛克拉斯提恩旋转}{Procrustean rotation}（参见 Hurley and Cattell, 1962）。
+
+心理学考试数据双因子解的倾斜旋转结果如表\ref{tab:EFA-results-from-oblique-rotation-of-psychological-test-data}所示。
+模式载荷展示了目标简单结构非常接近的近似：因子模式中的交叉载荷的绝对值在 $ 0.02 $ 到 $ 0.06 $ 附近。
+因此，我们有了一个简单解，第一个因子由前三项考试度量，第二个因子由后三项考试度量。
+
+\begin{table}[t]
+    \ttabbox{
+        \caption{心理学测试数据倾斜旋转结果}
+        \label{tab:EFA-results-from-oblique-rotation-of-psychological-test-data}
+    }{
+        \begin{tabular}{lrrcrrc|crc}\toprule
+            & \multicolumn{2}{c}{\textbf{模式载荷}} & 
+            & \multicolumn{2}{c}{\textbf{结构载荷}} & &
+            & \multicolumn{2}{c}{\textbf{因子间相关系数}} \\
+            \cline{2-3}\cline{5-6}\cline{9-10}
+            & 因子 1 & 因子 2 & & 因子 1 & 因子 2 & & & & 因子 2\\ 
+            $ PARA $ & $ 0.8480$ & $-0.0300$ & & $ 0.8687$ & $ 0.1906$ & & & 因子 1 & $0.2528$ \\
+            $ SENT $ & $ 0.8480$ & $-0.0300$ & & $ 0.8687$ & $ 0.1906$ & & & & \\
+            $ WORD $ & $ 0.8480$ & $-0.0300$ & & $ 0.8687$ & $ 0.1906$ & & & & \\
+            $ ADD  $ & $ 0.8480$ & $-0.0300$ & & $ 0.8687$ & $ 0.1906$ & & & & \\
+            $ DOTS $ & $ 0.8480$ & $-0.0300$ & & $ 0.8687$ & $ 0.1906$ & & & & \\
+            \bottomrule
+        \end{tabular}
+    }
+\end{table}
+
+倾斜变换导致了两个因子之间的相关系数为 0.25。
+这个微弱的相关表示具有高语言天赋（至少是考试中测量出来的篇章理解、句子完成、单词含义的能力）
+也会拥有比平均水平高的计量天赋，反之相同。
+注意到这个因子间的相关性反映在结构相关系数：所有矩阵中的交叉载荷都大约是 0.25 。
+因此，我们牺牲了正交旋转的一些简单性，换来一种可以说是“更清洁”的因素解决方案。
+一般地，将正交解和倾斜解都考虑一下来看哪个可以更好地服务目标并不是一个坏主意。
+
+一个 RTE 谷物数据地倾斜解既不能提供一个不同的解释也不能提供简单结构实质上更清晰地图景。
+在倾斜空间中，所有四个因子互相具有正相关（可能是一些潜在的光环效应的反映），
+只有一个例外：因子 1 和因子 2 有较小的负相关。
+这与认为谷物是健康的（即在因子 1 上有高值）更可能被视为非“人造”的（因子 2 上有低值）的观念是一致的。
+
+
+\subsection{如何在后续分析中使用这些结果}
+
+通常，因子分析本身并不是目的，而是进一步分析数据的中间步骤。
+例如，Roberts 和 Lattin 使用因子分析来确定可用于构建RTE谷物考虑模型的较少数量的潜在维度。
+对于这种类型的后续分析，我们需要知道每个原始观测在缩减因子空间中的位置。
+这些值称为\mindex{因子得分}{factor scores}。
+
+表\ref{tab:factor-score-coefficients-for-rte-cereal-data}给出了 RTE 谷物数据的四因子最大方差正交旋转解的因子得分系数。
+我们使用这些系数计算数据集中 235 个观测值中的每一个的因子得分，然后计算 12 个评级品牌中的每一个的平均因子得分。
+这些平均分数（如表\ref{tab:average-factor-scores-for-rte-cereals}所示）
+绘制在图\ref{fig:EFA-scatter-plots-of-factor-scores-for-rte-cereals}中；
+为了节省空间，我们刚刚展示了两个成对图（因子 1 对比因子 2 和因子 3 对比因子 4）。
+
+\begin{table}[htb]
+    \footnotesize
+    \begin{floatrow}
+        \ttabbox[\FBwidth]{
+            \caption{RTE 谷物数据的因子得分系数}
+            \label{tab:factor-score-coefficients-for-rte-cereal-data}
+        }{
+            \begin{tabular}{lrrrr}\toprule
+                & \multicolumn{4}{c}{\bfseries 因子得分系数} \\\cmidrule{2-5}
+                & 因子 1 & 因子 2 & 因子 3 & 因子 4 \\
+                Filling    & $ 0.1456$ & $ 0.0915$ & $ 0.0228$ & $-0.0420$ \\
+                Natural    & $ 0.1370$ & $-0.0142$ & $-0.0112$ & $-0.0417$ \\
+                Fibre      & $ 0.2160$ & $ 0.0542$ & $-0.1280$ & $-0.0746$ \\
+                Sweet      & $ 0.0425$ & $ 0.2261$ & $-0.0030$ & $ 0.0745$ \\
+                Easy       & $ 0.0088$ & $ 0.0176$ & $ 0.0663$ & $-0.0115$ \\
+                Salt       & $ 0.0301$ & $ 0.2010$ & $ 0.0158$ & $-0.1196$ \\
+                Satisfying & $ 0.1101$ & $ 0.0731$ & $ 0.1540$ & $-0.0361$ \\
+                Energy     & $ 0.0918$ & $ 0.0752$ & $ 0.0266$ & $ 0.0126$ \\
+                Fun        & $-0.0024$ & $ 0.0017$ & $ 0.1017$ & $ 0.1316$ \\
+                Kids       & $-0.0433$ & $ 0.0151$ & $ 0.3735$ & $-0.0789$ \\
+                Soggy      & $ 0.0390$ & $ 0.0646$ & $ 0.0402$ & $-0.1995$ \\
+                Economical & $-0.0043$ & $-0.0453$ & $ 0.1190$ & $-0.0855$ \\
+                Health     & $ 0.2155$ & $-0.0792$ & $-0.0091$ & $-0.0590$ \\
+                Family     & $-0.0294$ & $-0.0453$ & $ 0.2700$ & $-0.0043$ \\
+                Calories   & $ 0.0259$ & $ 0.1567$ & $-0.0080$ & $-0.0253$ \\
+                Plain      & $ 0.0319$ & $ 0.0699$ & $ 0.0740$ & $-0.2534$ \\
+                Crisp      & $-0.0372$ & $-0.0136$ & $ 0.0864$ & $ 0.1507$ \\
+                Regular    & $ 0.0672$ & $-0.0267$ & $-0.0316$ & $ 0.0129$ \\
+                Sugar      & $ 0.0444$ & $ 0.3824$ & $-0.0310$ & $-0.0384$ \\
+                Fruit      & $ 0.0376$ & $ 0.0321$ & $-0.1393$ & $ 0.1689$ \\
+                Process    & $ 0.0091$ & $ 0.1020$ & $ 0.0196$ & $-0.0824$ \\
+                Quality    & $ 0.0576$ & $-0.0674$ & $ 0.0531$ & $ 0.0527$ \\
+                Treat      & $-0.0279$ & $ 0.0329$ & $ 0.0654$ & $ 0.2471$ \\
+                Boring     & $ 0.0327$ & $ 0.0680$ & $-0.0178$ & $-0.1752$ \\
+                Nutritious & $ 0.2004$ & $ 0.0045$ & $-0.0229$ & $-0.0711$ \\
+                \bottomrule
+            \end{tabular}
+        }
+        \vbox to 1cm {
+            \ttabbox[\FBwidth]{
+                \caption{12 种 RTE 谷物的平均因子得分}
+                \label{tab:average-factor-scores-for-rte-cereals}
+            }{
+                \begin{tabular}{lcrrrr}\toprule
+                    品牌         & 观测数 & 因子 1  & 因子 2  & 因子 3  & 因子 4  \\\midrule
+                    All Bran     & $15$     & $0.3490 $ & $-0.3185$ & $-0.8861$ & $-0.3754$ \\
+                    Cerola       & $13$     & $0.5174 $ & $0.4994 $ & $-0.2332$ & $0.6582 $ \\
+                    Corn flakes  & $27$     & $-0.5541$ & $0.1165 $ & $0.5738 $ & $0.0241 $ \\
+                    Just Right   & $16$     & $-0.0133$ & $0.2278 $ & $-0.4196$ & $0.4753 $ \\
+                    Komplete     & $14$     & $0.5464 $ & $0.2338 $ & $-1.0084$ & $0.6024 $ \\
+                    NutriGrain   & $24$     & $-0.4255$ & $0.8086 $ & $0.5482 $ & $0.2852 $ \\
+                    Purina       & $18$     & $0.6226 $ & $0.6838 $ & $-0.4095$ & $0.5754 $ \\
+                    Rice Bubbles & $21$     & $-1.1650$ & $-0.4295$ & $0.6041 $ & $0.0627 $ \\
+                    Special K    & $23$     & $-0.3058$ & $-0.2142$ & $0.1541 $ & $-0.0549$ \\
+                    Sustain      & $12$     & $0.6772 $ & $-0.3021$ & $-0.3234$ & $0.8566 $ \\
+                    Vitabrits    & $25$     & $0.3649 $ & $-0.5921$ & $0.2180 $ & $-0.9316$ \\
+                    Weetbix      & $27$     & $0.3266 $ & $-0.4120$ & $-0.0713$ & $-0.8837$ \\
+                    \bottomrule
+                \end{tabular}
+            }
+            \vspace{1em}
+            \killfloatstyle
+            \ffigbox{
+                \scriptsize
+                \floatsetup[figure]{floatrowsep=none}\killfloatstyle 
+                \begin{subfloatrow}
+                    \ffigbox[0.24\textwidth]{
+                        \begin{tikzpicture}[scale=1.5]
+                            \def\cross#1{
+                                \draw ($(#1)+(-0.03,0)$)--($(#1)+(0.03,0)$);
+                                \draw ($(#1)+(0,-0.03)$)--($(#1)+(0,0.03)$);
+                            }
+                            \foreach \x in {-1.0,-0.5,0.0,0.5} {
+                                \draw (\x,-1) -- ++(0,-0.05) node [rotate=0,anchor=north] {$\x$};
+                            };
+                            \foreach \y in {-0.5,0,0.5} {
+                                \draw (-1.3,\y) -- ++(-0.05,0) node [rotate=90,anchor=south] {$\y$};
+                            };
+                            \node (xlabel) [rotate=0] at (0,-1.3) {Healthful};
+                            \node (ylabel) [rotate=90] at (-1.6,0) {Artificial};
+                            \draw (-1.3,-1) -- (-1.3,1.2) -- (1,1.2) -- (1,-1) -- cycle;
+                            \coordinate [label=left:AllBran]      (AllBran)     at ( 0.3490,-0.3185);
+                            \coordinate [label=below:Cerola]      (Cerola)      at ( 0.5174, 0.4994);
+                            \coordinate [label=left:Cornflakes]   (Cornflakes)  at (-0.5541, 0.1165);
+                            \coordinate [label=above:JustRight]   (JustRight)   at (-0.0133, 0.2278);
+                            \coordinate [label=below:Komplete]    (Komplete)    at ( 0.5464, 0.2338);
+                            \coordinate [label=below:NutriGrain]  (NutriGrain)  at (-0.4255, 0.8086);
+                            \coordinate [label=above:Purina]      (Purina)      at ( 0.6226, 0.6838);
+                            \coordinate [label=right:RiceBubbles] (RiceBubbles) at (-1.1650,-0.4295);
+                            \coordinate [label=left:SpecialK]     (SpecialK)    at (-0.3058,-0.2142);
+                            \coordinate [label=above:Sustain]     (Sustain)     at ( 0.6772,-0.3021);
+                            \coordinate [label=below:Vitabrits]   (Vitabrits)   at ( 0.3649,-0.5921);
+                            \coordinate [label=right:Weetbix]     (Weetbix)     at ( 0.3266,-0.4120);
+                            \cross{AllBran};
+                            \cross{Cerola};
+                            \cross{Cornflakes};
+                            \cross{JustRight};
+                            \cross{Komplete};
+                            \cross{NutriGrain};
+                            \cross{Purina};
+                            \cross{RiceBubbles};
+                            \cross{SpecialK};
+                            \cross{Sustain};
+                            \cross{Vitabrits};
+                            \cross{Weetbix};
+                        \end{tikzpicture}
+                    }{\caption{}}
+                    \ffigbox[0.24\textwidth]{
+                        \begin{tikzpicture}[scale=1.5]
+                            \def\cross#1{
+                                \draw ($(#1)+(-0.03,0)$)--($(#1)+(0.03,0)$);
+                                \draw ($(#1)+(0,-0.03)$)--($(#1)+(0,0.03)$);
+                            }
+                            \foreach \x in {-1.0,-0.5,0.0,0.5} {
+                                \draw (\x,-1) -- ++(0,-0.05) node [rotate=0,anchor=north] {$\x$};
+                            };
+                            \foreach \y in {-0.5,0,0.5} {
+                                \draw (-1.3,\y) -- ++(-0.05,0) node [rotate=90,anchor=south] {$\y$};
+                            };
+                            \node (xlabel) [rotate=0] at (0,-1.3) {Nonadult};
+                            \node (ylabel) [rotate=90] at (-1.6,0) {Interesting};
+                            \draw (-1.3,-1) -- (-1.3,1.2) -- (1,1.2) -- (1,-1) -- cycle;
+                            \coordinate [label=right:AllBran]      (AllBran)     at (-0.8861,-0.3754);
+                            \coordinate [label=right:Cerola]      (Cerola)      at (-0.2332, 0.6582);
+                            \coordinate [label=below:Cornflakes]  (Cornflakes)  at ( 0.5738, 0.0241);
+                            \coordinate [label=below:JustRight]   (JustRight)   at (-0.4196, 0.4753);
+                            \coordinate [label=above:Komplete]    (Komplete)    at (-1.0084, 0.6024);
+                            \coordinate [label=above:NutriGrain]  (NutriGrain)  at ( 0.5482, 0.2852);
+                            \coordinate [label=left:Purina]      (Purina)      at (-0.4095, 0.5754);
+                            \coordinate [label=above:RiceBubbles] (RiceBubbles) at ( 0.6041, 0.0627);
+                            \coordinate [label=left:SpecialK]    (SpecialK)    at ( 0.1541,-0.0549);
+                            \coordinate [label=above:Sustain]     (Sustain)     at (-0.3234, 0.8566);
+                            \coordinate [label=right:Vitabrits]   (Vitabrits)   at ( 0.2180,-0.9316);
+                            \coordinate [label=left:Weetbix]     (Weetbix)     at (-0.0713,-0.8837);
+                            \cross{AllBran};
+                            \cross{Cerola};
+                            \cross{Cornflakes};
+                            \cross{JustRight};
+                            \cross{Komplete};
+                            \cross{NutriGrain};
+                            \cross{Purina};
+                            \cross{RiceBubbles};
+                            \cross{SpecialK};
+                            \cross{Sustain};
+                            \cross{Vitabrits};
+                            \cross{Weetbix};
+                        \end{tikzpicture}
+                    }{\caption{}}
+                \end{subfloatrow}
+            }{
+                \vspace{-1em}
+                \caption{RTE 谷物因子得分散点图}
+                \label{fig:EFA-scatter-plots-of-factor-scores-for-rte-cereals}
+            }
+        }
+    \end{floatrow}
+\end{table}
+
+平均因子得分与我们之前关于这些谷物相对位置的概念一致。
+例如，Weetbix 和 Vitabrits（每种都是切碎的小麦型饼干）都有类似的感觉：健康，非人工和枯燥。
+三种不同品牌的牛奶什锦早餐（Cerola、Komplete 和 Purina）也在因子空间中聚集在一起。
+
+\subsection{如何评估因子结构的有效性}
+
+通过所有探索性程序，我们需要评估我们的描述性分析在多大程度上捕获整个人口的特征，而不仅仅是我们所选样本的特征。
+因此，我们需要提出这个问题：分析的结果是否可以推广？ 
+因为因子分析的一个重要目标是对潜在因素结构的解释，
+我们可能会问，如果我从同一群体中选择了不同的样本，我是否会得出基本相同的解释？
+
+回答这个问题的一种方法是使用一个保留样本。
+如果我们的横截面样本的大小足够大，那么我们可以简单地将数据分成两个大小相等的独立组（使用随机分配来确保可比性）。
+然后，我们可以对每个因子进行因子分析，并比较因子加载矩阵的解释相似性。
+然而，基于偶然视觉检查的比较很少令人满意。
+可能涉及数百个数字，使得比较困难。
+此外，该任务是主观的并且受到一厢情愿的思考（即，研究人员可能倾向于抓住矩阵之间的相似性并淡化对比度）。
+更严格的方法涉及使用验证性因子分析来使用来自保持样本的数据来测试第一样本中鉴定的特定因子结构。
+如果未拒绝指定的因子结构（即，模型提供对保持数据的合理拟合），那么我们可以得出结论，解释超出了第一个数据样本。
+第\ref{chapter:ConfirmatoryFactorAnalysis}章介绍并讨论了验证性因子分析。
+
+另一种方法涉及评估采样变化对因子结构的影响（通过使用保持样本或自举采样）。
+让我们假设我们使用以下过程来识别具有 $ c $ 个共同因子的解决方案的基础结构。
+在某种类型的旋转之后（假设为最大方差正交旋转），我们确定因子载荷矩阵的每一行中的最高载荷（绝对值）并将该变量与该因子相关联。
+然后，我们基于与其相关的变量（即，高正负载或高负负载）来解释每个公共因子。
+实际上，这相当于用 0 和 1 代替因子载荷矩阵，表示因子解决方案的简单结构。
+结果是一个每个变量与一个且只有一个公共因子相关联的划分。
+因子载荷矩阵的这种“结构化”构成了我们解释的基础。我们使用 $ \vS_0 $ 来表示原始数据的因子加载矩阵的这种简单结构变换。
+RTE 谷物数据的矩阵 $ \vS_0 $ 如表5.15所示。
+请注意，已重新排序属性，以便将加载在同一因子上的属性一起列出。
+
+\begin{table}[t]
+    \centering
+    \ttabbox{
+        \caption{最大因子载荷的零一矩阵}
+        \label{tab:EFA-zeroone-matrix-of-maximum-factor-loadings}
+    }{
+        \begin{tabularx}{\textwidth}{XYYYY}\toprule
+            & 因子 1 & 因子 2 & 因子 3 & 因子 4 \\\midrule
+            Filling    & 1 & 0 & 0 & 0 \\
+            Natural    & 1 & 0 & 0 & 0 \\
+            Fibre      & 1 & 0 & 0 & 0 \\
+            Satisfying & 1 & 0 & 0 & 0 \\
+            Energy     & 1 & 0 & 0 & 0 \\
+            Health     & l & 0 & 0 & 0 \\
+            Regular    & l & 0 & 0 & 0 \\
+            Quality    & l & 0 & 0 & 0 \\
+            Nutritious & 1 & 0 & 0 & 0 \\\midrule
+            Sweet      & 0 & 1 & 0 & 0 \\
+            Salt       & 0 & l & 0 & 0 \\
+            Calories   & 0 & l & 0 & 0 \\
+            Sugar      & 0 & l & 0 & 0 \\
+            Process    & 0 & 1 & 0 & 0 \\\midrule
+            Easy       & 0 & 0 & l & 0 \\
+            Kids       & 0 & 0 & 1 & 0 \\
+            Economical & 0 & 0 & 1 & 0 \\
+            Family     & 0 & 0 & l & 0 \\\midrule
+            Fun        & 0 & 0 & 0 & 1 \\
+            Soggy      & 0 & 0 & 0 & l \\
+            Plain      & 0 & 0 & 0 & 1 \\
+            Crisp      & 0 & 0 & 0 & 1 \\
+            Fruit      & 0 & 0 & 0 & 1 \\
+            Treat      & 0 & 0 & 0 & l \\
+            Boring     & 0 & 0 & 0 & 1 \\
+            \bottomrule
+        \end{tabularx}
+    }
+\end{table}
+
+我们现在问，对于相同人口的不同样本，我们会做出同样的解释吗？
+评估这种情况的一种方法是问，如果我们按照上面段落中描述的程序，用不同的样本是否会找到与公因子相关的同一组变量？
+对于保留样本，我们可以通过对保持数据进行因子分析，提取 $ c $ 因子（与原始数据上的因子解决方案相同的数量），
+并通过上文所述方法创建简单的结构因子加载矩阵（表示为 $ \vS_1 $）来实现此目的。
+
+我们现在有两个划分，$ \vS_0 $ 和 $ \vS_1 $ ，每个都代表了变量到潜在因子的分配。
+比较它们的一种方法是创建一个 $ c \times c $ 的交叉表，第 $ (i,j) $ 单元格代表了
+在原始数据的分析中与因子 $ i $ 相关而在保留数据分析中与因子 $ j $ 相关的变量数目。
+使用矩阵表示法，该交叉表由矩阵乘积 $ S_0\T S_1 $ 给出。
+如果原始因子分析的解释是有效的，那么它应该延伸到保留样本。
+因此，我们应该期望在分区 $ S_0 $ 和 $ S_1 $ 之间看到强烈的对应关系，
+在交叉表的对角线上的元素应较大，在对角线上的元素应较小或为零。
+有一些措施，例如 Hubert 和 Arabie（1985）用于比较分区的改进的 Rand 统计量，可以用来量化两个因子结构之间的对应强度。
+
+还可以通过使用自举采样来评估因子结构的特定解释的稳定性。
+自举样本只是一个大小为 $n$ 的样本，用原始 $n$ 个观察值替换。
+请注意，某些观察结果不会包含在自举样本中，而其他观察结果可能会包含两到三次。
+自举样本让我们对假设原始数据集代表基础人口时我们期望的抽样变异的影响有了一些了解。
+对于每个自举样本 $k$，我们执行因子分析并形成简单的结构矩阵 $\vS_k$。
+然后，我们通过查看所有自举样本 $k$ 中结构矩阵 $\vS_0$ 和 $\vS_k$ 之间的对应关系的变化来评估我们的解释的稳定性。
+
+要评估多个划分的可变性，对模型中所有的变量建立 $ p \times p $ 为交叉表比较容易，
+其中第 $ (i,j) $ 单元格表示变量 $ i $ 和 $ j $ 是否关联到同一个因子。
+用矩阵的写法，这个交叉表有矩阵乘积 $ \vS_0\vS_k\T $ 给出。
+我们可以非常多次（记为 $ K $ 次）自举采样，然后求和 $ \sum_{k=1}^{K}\vS_0\vS_k\T $ 。
+生成的交叉表包含使用相同的基础公因子标识每对变量的次数。
+如果我们的解释是稳定的（即相对不受我们数据中的采样变化影响的解释），
+那么我们应该期望看到在我们的原始数据中负载在一起的变量在大多数或全部自举样本中与相同的因子相关联。
+
+为了说明的目的，我们使用这个程序来评估我们解释 RTE 谷物数据因子解决方案的简单结构的稳定性
+（见表\ref{tab:EFA-zeroone-matrix-of-maximum-factor-loadings}）。
+我们总共进行了 $ K = 25 $ 个自举样本。
+由矩阵交叉积 $ \sum_k\vS_0\vS_k\T $ 之和给出的交叉列表如表\ref{tab:EFA-cross-tabulation-of-25-bootstrap-samples}所示。
+表中的模式揭示了有关因子解决方案的几个方面，无法通过仅查看原始数据中的因子载荷矩阵来评估。
+首先，我们注意到因素 1 和 2（“健康”和“人工”）的结构非常稳定，至少比基础因素 3 和 4（“非成人”和“有趣”）的结构更为稳定。
+在与原始解决方案中的前两个因素相关联的 14 个属性中，
+除了两个之外的所有因素在所有 25 个自举样本中表现出与原始样本中完全相同的加载模式。
+其余两个属性（满意和已处理）与超过 80\% 的自举样本中的原始结构一致（分别为 25 和 22 中的 21 和 21）。
+
+\begin{table}[htb]
+    \small
+    \setlength{\tabcolsep}{4pt}
+    \ttabbox{
+        \caption{25 个自举样本的交叉表}
+        \label{tab:EFA-cross-tabulation-of-25-bootstrap-samples}
+    }{
+        \begin{tabular}{lrrrrrrrrr|rrrrr|rrrr|rrrrrrr}\toprule
+            Filling    & 25 & 25 & 25 & 22 & 25 & 25 & 25 & 25 & 25 & 0  & 0  & 0  & 0  & 2  & 3  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 7  & 0  & 0  \\
+            Nature     & 25 & 25 & 25 & 22 & 25 & 25 & 25 & 25 & 25 & 0  & 0  & 0  & 0  & 2  & 3  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 7  & 0  & 0  \\
+            Fibre      & 25 & 25 & 25 & 22 & 25 & 25 & 25 & 25 & 25 & 0  & 0  & 0  & 0  & 2  & 3  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 7  & 0  & 0  \\
+            Satisfying & 22 & 22 & 22 & 25 & 22 & 22 & 22 & 22 & 22 & 0  & 0  & 0  & 0  & 2  & 6  & 3  & 2  & 3  & 2  & 0  & 0  & 1  & 5  & 0  & 0  \\
+            Energy     & 25 & 25 & 25 & 22 & 25 & 25 & 25 & 25 & 25 & 0  & 0  & 0  & 0  & 2  & 3  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 7  & 0  & 0  \\
+            Health     & 25 & 25 & 25 & 22 & 25 & 25 & 25 & 25 & 25 & 0  & 0  & 0  & 0  & 2  & 3  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 7  & 0  & 0  \\
+            Regular    & 25 & 25 & 25 & 22 & 25 & 25 & 25 & 25 & 25 & 0  & 0  & 0  & 0  & 2  & 3  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 7  & 0  & 0  \\
+            Quality    & 25 & 25 & 25 & 22 & 25 & 25 & 25 & 25 & 25 & 0  & 0  & 0  & 0  & 2  & 3  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 7  & 0  & 0  \\
+            Nutritious & 25 & 25 & 25 & 22 & 25 & 25 & 25 & 25 & 25 & 0  & 0  & 0  & 0  & 2  & 3  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 7  & 0  & 0  \\\hline
+            Sweet      & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 25 & 25 & 25 & 25 & 21 & 0  & 0  & 5  & 0  & 0  & 0  & 0  & 0  & 1  & 1  & 0  \\
+            Salt       & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 25 & 25 & 25 & 25 & 21 & 0  & 0  & 5  & 0  & 0  & 0  & 0  & 0  & 1  & 1  & 0  \\
+            Calories   & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 25 & 25 & 25 & 25 & 21 & 0  & 0  & 5  & 0  & 0  & 0  & 0  & 0  & 1  & 1  & 0  \\
+            Sugar      & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 25 & 25 & 25 & 25 & 21 & 0  & 0  & 5  & 0  & 0  & 0  & 0  & 0  & 1  & 1  & 0  \\
+            Process    & 2  & 2  & 2  & 2  & 2  & 2  & 2  & 2  & 2  & 21 & 21 & 21 & 21 & 25 & 1  & 0  & 4  & 0  & 0  & 2  & 2  & 1  & 3  & 0  & 1  \\\hline
+            Easy       & 3  & 3  & 3  & 6  & 3  & 3  & 3  & 3  & 3  & 0  & 0  & 0  & 0  & 1  & 25 & 21 & 14 & 21 & 14 & 1  & 1  & 13 & 2  & 4  & 4  \\
+            Kids       & 0  & 0  & 0  & 3  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 21 & 25 & 18 & 25 & 14 & 0  & 0  & 12 & 3  & 3  & 3  \\
+            Economical & 0  & 0  & 0  & 2  & 0  & 0  & 0  & 0  & 0  & 5  & 5  & 5  & 5  & 4  & 14 & 18 & 25 & 18 & 8  & 2  & 2  & 9  & 6  & 2  & 1  \\
+            Family     & 0  & 0  & 0  & 3  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 21 & 25 & 18 & 25 & 14 & 0  & 0  & 12 & 3  & 3  & 3  \\\hline
+            Fun        & 0  & 0  & 0  & 2  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 14 & 14 & 8  & 14 & 25 & 11 & 11 & 19 & 6  & 14 & 14 \\
+            Soggy      & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 2  & 1  & 0  & 2  & 0  & 11 & 25 & 25 & 13 & 14 & 21 & 22 \\
+            Palin      & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 2  & 1  & 0  & 2  & 0  & 11 & 25 & 25 & 13 & 14 & 21 & 22 \\
+            Crisp      & 0  & 0  & 0  & 1  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 1  & 13 & 12 & 9  & 12 & 19 & 13 & 13 & 25 & 5  & 15 & 16 \\
+            Fruit      & 7  & 7  & 7  & 5  & 7  & 7  & 7  & 7  & 7  & 1  & 1  & 1  & 1  & 3  & 2  & 3  & 6  & 3  & 6  & 14 & 14 & 5  & 25 & 11 & 11 \\
+            Treat      & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 1  & 1  & 1  & 1  & 0  & 4  & 3  & 2  & 3  & 14 & 21 & 21 & 15 & 11 & 25 & 24 \\
+            Boring     & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 0  & 1  & 4  & 3  & 1  & 3  & 14 & 22 & 22 & 16 & 11 & 24 & 25 \\
+            \bottomrule
+        \end{tabular}
+    }
+\end{table}
+
+第三和第四个共同因素的结构似乎有更多的变化。
+例如，与原始样本中的第四个因子（“有趣”）相关联的属性Crisp和Fun与属于孩子和家庭（来自第三个共同因子“非成人”）的属性相关联，
+超过一半 自举样本。 此外，属性“Fruit”加载第四个因子的变量只有大约一半的时间；
+其余的时间主要是在第一个因子上加载（偶尔在第二个或第三个因子上加载）。
+
+我们没有统计数据适用于表 \ref{tab:EFA-cross-tabulation-of-25-bootstrap-samples} 中的数字来测试所选因子结构的可靠性。
+与探索性因素分析中的许多其他步骤（例如，选择潜在因素的数量，解释解决方案）一样，
+因子解释的有效性评估是一种主观判断（在某种程度上甚至完全基于实践）。
+即使我们的实质性解释没有改变，分析也是有用的，因为它揭示了结构随样本变化而变化的程度。
+
+在上面的一个验证练习之后，有时候很有诱惑力来“微调”因子解决方案。
+这通常采取丢弃变量的形式，这些变量在因子解决方案中的位置似乎不太稳定，以便得出更清晰可解释的因子解决方案。
+因此，在RTE谷物数据的背景下，人们可能倾向于放弃变量 Fun、Crisp 和 Fruit 可能并重新运行因子分析，
+希望最终解决方案避免上述解决方案中揭示的一些潜在的歧义。
+
+这是对这个诱惑的一个最好的抵抗，至少有两个原因。
+首先，变量的选择性保留仍然基于样本中的方差模式，其由可归因于基础种群的变异加上与该特定样本相关的方差组成。
+微调可以改善因子解决方案的样本内适应性，但它会危害其超出样本的普遍性。
+至少，如果选择性地使用一些初始探索性因子分析来减少分析中的变量数量，则应使用保持样本重新评估后续因子解决方案。
+
+其次，简单的结构并不总是要求良好的因子分析解决方案。
+请记住，探索性因素分析的目标是让数据表明底层结构。
+表现出简单结构的解决方案更容易理解，但并不总是真实的样子。
