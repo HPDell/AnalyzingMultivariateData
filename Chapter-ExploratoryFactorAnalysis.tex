@@ -647,9 +647,9 @@ Thurstone 认为大多数内容域可能涉及几个隐藏的（即潜在的或�
 在这个更形式化的因子分析模型的处理中，回到主成分分析模型的建立过程中是非常有用的。
 我们已经介绍了，对主成分分析问题的求解等同于对标准化的数据矩阵 $ \vX $ 进行奇异值分解，如下所示：
 \begin{equation}\label{equ:EFA-x-svd}
-    \vX = \vZ_{\mathrm{s}} \vD^{\frac{1}{2}}\vU\T
+    \vX = \vZ_{\symrm{s}} \vD^{\frac{1}{2}}\vU\T
 \end{equation}
-其中 $ \vZ_{\mathrm{s}} $ 是标准化的主成分（全都互不相关），
+其中 $ \vZ_{\symrm{s}} $ 是标准化的主成分（全都互不相关），
 $ \vD^{\frac{1}{2}} $ 是对角线元素全为主成分标准差的对角矩阵，
 $ \vU $ 是特征向量矩阵（全都互相正交）。
 据此，我们可以将样本相关矩阵 $ \vR $ 重写为奇异值分解得到的特征值和特征向量的函数。
@@ -660,12 +660,12 @@ $ \vU $ 是特征向量矩阵（全都互相正交）。
 带入式(\ref{equ:EFA-x-svd})中的奇异值分解结果到式(\ref{equ:EFA-R-define})中并简化可得
 \begin{align}
     \begin{split}
-        \vR & = \frac{1}{n-1}(\vZ_{\mathrm{s}} \vD^{\frac{1}{2}}\vU\T)\T(\vZ_{\mathrm{s}} \vD^{\frac{1}{2}}\vU\T) \\ 
-        & = \frac{1}{n-1}\vU\vD^{\frac{1}{2}}(\vZ_{\mathrm{s}}\T\vZ_{\mathrm{s}})\vD^{\frac{1}{2}}\vU\T \\
+        \vR & = \frac{1}{n-1}(\vZ_{\symrm{s}} \vD^{\frac{1}{2}}\vU\T)\T(\vZ_{\symrm{s}} \vD^{\frac{1}{2}}\vU\T) \\ 
+        & = \frac{1}{n-1}\vU\vD^{\frac{1}{2}}(\vZ_{\symrm{s}}\T\vZ_{\symrm{s}})\vD^{\frac{1}{2}}\vU\T \\
         & = (\vU\vD^{\frac{1}{2}})(\vU\vD^{\frac{1}{2}})\T
     \end{split}
 \end{align}
-因为 $ \hfrac{1}{(n-1)}\vZ_{\mathrm{s}}\T\vZ_{\mathrm{s}} $ 正好是一个单位阵。
+因为 $ \hfrac{1}{(n-1)}\vZ_{\symrm{s}}\T\vZ_{\symrm{s}} $ 正好是一个单位阵。
 如果我们继续回忆，矩阵乘积 $ \vU\vD^{\frac{1}{2}} $ 正好是因子载荷矩阵 $ \vF $
 （即原始数据矩阵 $ \vX $ 和主成分矩阵 $ \vZ $ 的相关系数矩阵），
 我们可以 $ \vR $ 的表达式简化为如下形式：

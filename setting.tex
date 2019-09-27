@@ -31,12 +31,12 @@
 %------------------------------------------------------------------------------
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{mathptmx}
-% \usepackage{unicode-math}
-% \setmainfont{XITS}
-% \setmathfont[bold-style = ISO]{XITS Math}
+% \usepackage[T1]{fontenc}
+% \usepackage[utf8]{inputenc}
+% \usepackage{mathptmx}
+\usepackage{unicode-math}
+\setmainfont{XITS}
+\setmathfont[bold-style = ISO]{XITS Math}
 
 
 %------------------------------------------------------------------------------
@@ -81,16 +81,16 @@
 %------------------------------------------------------------------------------
 % Define new macros
 %------------------------------------------------------------------------------
-\newcommand{\diff}{\mathrm{d }}
+\newcommand{\diff}{\symrm{d }}
 \newcommand{\ds}{\displaystyle}
-\newcommand{\cpi}{\mathrm{\pi}}
+\newcommand{\cpi}{\symrm{\pi}}
 \newcommand{\T}{^\mathrm{T}}
 \newcommand{\highlight}[1]{\textcolor{blue}{\textbf{\kaishu{#1}}}}
 \newcommand{\done}{\ooalign{$\square$ \cr \raisebox{3pt}{\scriptsize{$√$}}}}
 \newcommand{\undone}{\ooalign{$\square$ \cr \raisebox{3pt}{}}}
-\newcommand{\cov}[1]{\mathrm{cov}\left({#1}\right)}
-\newcommand{\var}[1]{\mathrm{var}\left({#1}\right)}
-\newcommand{\corr}[1]{\mathrm{corr}\left({#1}\right)}
+\newcommand{\cov}[1]{\symrm{cov}\left({#1}\right)}
+\newcommand{\var}[1]{\symrm{var}\left({#1}\right)}
+\newcommand{\corr}[1]{\symrm{corr}\left({#1}\right)}
 \newcommand{\ddfrac}[2]{\displaystyle{\frac{\displaystyle{#1}}{\displaystyle{#2}}}}
 \newlength{\subparitemindent}
 \newlength{\paritemindent}
@@ -114,7 +114,7 @@
 \newcommand{\hfrac}[2]{\left. {#1} \middle/ {#2} \right.}
 \newcommand{\mindex}[2]{{\kaishu{#1}}(#2)\index{{#1}({#2})}}
 \newcommand{\rsquare}{$ R^2 $}
-\newcommand{\diag}{\mathrm{diag}}
+\newcommand{\diag}{\symrm{diag}}
 %------------------------------------------------------------------------------
 % Format setting
 %------------------------------------------------------------------------------
